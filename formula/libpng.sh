@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GV_url="http://download.sourceforge.net/libpng/libpng-1.6.16.tar.xz"
-GV_sha1="31855a8438ae795d249574b0da15b34eb0922e13"
+GV_url="http://downloads.sourceforge.net/project/libpng/libpng16/1.6.18/libpng-1.6.18.tar.gz"
+GV_sha1="c936eaa83fcd65c3c0eb696fd1f0ecc8c04f241f"
 
 GV_depend=()
 
@@ -14,8 +14,7 @@ if [ $? == 1 ]; then
 
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${GV_prefix}" 
-		"--program-prefix=${UV_target}-"
+		"--prefix=${UV_sysroot_dir}" 
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--includedir=${UV_sysroot_dir}/include"
 		"--enable-shared"

@@ -16,17 +16,19 @@ if [ $? == 1 ]; then
 	
 	FU_tools_check_depend
 	
-	export LIBS="-lssh2 -lcrypto -lgcrypt -lgpg-error -lz -ldl"
+	export LIBS="-lcrypto -lz -ldl "
 
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${GV_prefix}" 
-		"--program-prefix=${UV_target}-"
+		"--prefix=${UV_sysroot_dir}" 
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--includedir=${UV_sysroot_dir}/include"
 		"--enable-shared"
 		"--disable-static"
+		#"--without-libssh2"
 		"--enable-ipv6"
+		"--disable-ldap"
+		"--disable-ldaps"
 	)
 	
 	FU_file_get_download

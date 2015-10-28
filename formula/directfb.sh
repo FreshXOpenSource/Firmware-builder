@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GV_url="http://sources.buildroot.net/DirectFB-1.4.1.tar.gz"
-GV_sha1="98f3c46789fa599367037654ee35b71f453b68b3"
+GV_url="http://sources.buildroot.net/DirectFB-1.7.7.tar.gz"
+GV_sha1="205d824906906303db9b096cc2d3bea0662e8860"
 
 GV_depend=(
 	"zlib"
@@ -9,12 +9,7 @@ GV_depend=(
 	"freetype"
 	"libpng"
 	"jpeg"
-	"libX11"
-	"libXext"
-	"xproto"
-	"xextproto"
 	"inputproto"
-	"xcb-proto"
 	"videoproto"
 	"kbproto"
 )
@@ -26,23 +21,21 @@ if [ $? == 1 ]; then
 	
 	FU_tools_check_depend
 
+	export LIBS="-lm"
+
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${GV_prefix}" 
-		"--program-prefix=${UV_target}-"
+		"--prefix=${UV_sysroot_dir}" 
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--includedir=${UV_sysroot_dir}/include"
 		"--enable-shared"
-		"--disable-static"
 		"--enable-zlib"
-		"--disable-png"
 		"--enable-debug"
 		"--disable-voodoo"
 		"--disable-mmx"
 		"--disable-sse"
-		"--enable-freetype"
-		"--with-gfxdrivers=davinci,neomagic,nsc,omap,vmware"
-		"--with-inputdrivers=dynapro,elo-input,gunze,h3600_ts,joystick,keyboard,linuxinput,lirc,mutouch,penmount,ps2mouse,serialmouse,sonypijogdial,tslib,ucb1x00,wm97xx"
+		"--without-tools"
+		"--with-gfxdrivers=none"
 		"--with-sysroot=${UV_sysroot_dir}"
 	)
 	
@@ -60,4 +53,4 @@ if [ $? == 1 ]; then
 	FU_build_finishinstall
 fi
 
-export LDFLAGS="${LDFLAGS} -L${UV_sysroot_dir}/lib/directfb-1.2-9"
+export LDFLAGS="${LDFLAGS} -L${UV_sysroot_dir}/lib/directfb-1.7-7"

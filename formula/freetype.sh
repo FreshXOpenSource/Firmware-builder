@@ -1,14 +1,16 @@
 #!/bin/bash
 
-GV_url="http://download.savannah.gnu.org/releases/freetype/freetype-2.4.9.tar.bz2"
-GV_sha1="5cb80ab9d369c4e81a2221bcf45adcea2c996b9b"
+#GV_url="http://download.savannah.gnu.org/releases/freetype/freetype-2.4.9.tar.bz2"
+#GV_sha1="5cb80ab9d369c4e81a2221bcf45adcea2c996b9b"
+GV_url="http://download.savannah.gnu.org/releases/freetype/freetype-2.5.2.tar.gz"
+GV_sha1="a0649cab12662370894599a3f3e7fbe4a6598e1c"
 
 GV_depend=(
 	"zlib"
 )
 
 FU_tools_get_names_from_url
-GV_version="14.1.8"
+GV_version="17.1.11"
 FU_tools_installed "freetype2.pc"
 
 if [ $? == 1 ]; then
@@ -17,8 +19,7 @@ if [ $? == 1 ]; then
 
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${GV_prefix}" 
-		"--program-prefix=${UV_target}-"
+		"--prefix=${UV_sysroot_dir}" 
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--includedir=${UV_sysroot_dir}/include"
 		"--enable-shared"
@@ -27,11 +28,13 @@ if [ $? == 1 ]; then
 	
 	FU_file_get_download
 	FU_file_extract_tar
-		
+
+	export LIBPNG_CFLAGS=-I${UV_sysroot_dir}/include/libpng16
+	export LIBPNG_LDFLAGS=-lpng16
+	export HOSTCC=/usr/bin/gcc
 	FU_build_configure
-	
 	rm -f "${GV_source_dir}/${GV_dir_name}config.mk"
-	
+
 	FU_build_make
 	FU_build_install
 	FU_build_finishinstall
