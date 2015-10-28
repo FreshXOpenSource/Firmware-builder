@@ -10,7 +10,7 @@ FU_tools_is_error() {
 	local arg=$1
 	
 	if [ $pipestatus -eq 0 ]; then
-		echo "donne"
+		echo "done"
 	else
 		
 		if [ $arg == "configure" ]; then 
@@ -86,6 +86,34 @@ FU_tools_get_names_from_dir_name() {
 }
 
 
+##
+## Test if formula already is installed 
+##
+FU_binaries_installed() {
+	echo -n "Build ${GV_name}:"
+	if [ -f "${UV_sysroot_dir}/bin/$1" ]; then
+			echo " already installed"
+			return 0
+	fi
+	if [ -f "${UV_sysroot_dir}/sbin/$1" ]; then
+			echo " already installed"
+			return 0
+	fi
+	if [ -f "${UV_sysroot_dir}/usr/bin/$1" ]; then
+			echo " already installed"
+			return 0
+	fi
+	if [ -f "${UV_sysroot_dir}/usr/sbin/$1" ]; then
+			echo " already installed"
+			return 0
+	fi
+	if [ -f "${UV_sysroot_dir}/$1" ]; then
+			echo " already installed"
+			return 0
+	fi
+	echo " Required binary not found"
+	return 1
+}
 ##
 ## Test if formula already is installed 
 ##

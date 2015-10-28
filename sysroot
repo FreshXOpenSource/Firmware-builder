@@ -125,7 +125,6 @@ source "${GV_base_dir}/include/tools.sh"
 source "${GV_base_dir}/include/files.sh"
 source "${GV_base_dir}/include/build.sh"
 
-
 ##
 ## Parse the comandline arguments 
 ##
