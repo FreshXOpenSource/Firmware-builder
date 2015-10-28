@@ -1,14 +1,12 @@
-# arm-cross-sysroot
+# Firmware-builder
+
+The Firmware-builder is the basis to build our WallyTV Firmware. Its based on https://github.com/Illuminux/arm-cross-sysroot.git but extends it in relevant parts (such as including libtool as a cruical formula and adding further formulas such as libSDL2 etc.)
 
 ARM Cross Sysroot is a script bundle to cross-compile libraries on a host computer for an ARM target. This git repo contains just scripts to build the libraries for an ARM target. It does not contains any of the the source. They will be downloaded during the build process.
 
 ## Usage
 
-By default clone the script into your home development directory.
-
-`$ git clone https://github.com/Illuminux/arm-cross-sysroot.git`
-
-Change into the *arm-cross-sysroot* directory and copy/rename the file *[config.cfg.sample](config.cfg.sample)* to *config.cfg*:
+Change into the *Firmware-builder* directory and copy/rename the file *[config.cfg.sample](config.cfg.sample)* to *config.cfg*:
 
 `$ mv config.cfg.sample config.cfg`
 
@@ -21,7 +19,8 @@ Open *config.cfg* with an editor of your choice and and customize it according t
 
 To build the cross sysroot just run the following command:
 
-`$ ./sysroot --build`
+`$ ./sysroot --build` or
+`% ./sysroot -b --debug` if you wish the full output of the process
 
 ## Dependencies
 
@@ -45,8 +44,9 @@ To build the cross sysroot just run the following command:
 - Homebrew:<br>`$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)`
 - Homebrew packages:<br>The required packages will be installed automatically during the script will be executed.
 
-#### GCC ARM Cross ToolChain:
+#### GCC ARM Cross ToolChains :
 
+- http://www.jvcref.com/files/PI/arm-linux-gnueabihf.pkg
 - [arm-linux-gnueabihf](http://www.welzels.de/blog/download/gcc-linaro-arm-linux-gnueabihf-2014.05_mac.zip)<br>Hardfloat - Based on Linaro crosstool-NG (BeagleBone etc.)
 - [arm-linux-gnueabihf-raspbian](http://www.welzels.de/blog/download/gcc-linaro-arm-linux-gnueabihf-raspbian-2014.05_mac.zip)<br> Hardfloat - Based on Linaro crosstool-NG (Raspberry PI)
 - [arm-linux-gnueabi](http://www.welzels.de/blog/download/linaro-arm-linux-gnueabi-1.13.1-4.8-2014.04-mac.zip)<br>Softfloat - Based on Linaro crosstool-NG (QNAP etc.)
