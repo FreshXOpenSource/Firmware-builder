@@ -19,7 +19,7 @@ Open *config.cfg* with an editor of your choice and and customize it according t
 
 To build the cross sysroot just run the following command:
 
-`$ ./sysroot --build` or
+`$ ./sysroot --build` or<br>
 `% ./sysroot -b --debug` if you wish the full output of the process
 
 ## Dependencies
@@ -51,17 +51,22 @@ To build the cross sysroot just run the following command:
 - [arm-linux-gnueabihf-raspbian](http://www.welzels.de/blog/download/gcc-linaro-arm-linux-gnueabihf-raspbian-2014.05_mac.zip)<br> Hardfloat - Based on Linaro crosstool-NG (Raspberry PI)
 - [arm-linux-gnueabi](http://www.welzels.de/blog/download/linaro-arm-linux-gnueabi-1.13.1-4.8-2014.04-mac.zip)<br>Softfloat - Based on Linaro crosstool-NG (QNAP etc.)
 
-## Supported libraries:
+## Supported binaries / libraries:
+
+- **Binaries:**
+        - Busybox
+        - fuse
+        - funionfs
 
 - **Image Libraries:**
 	- libjpeg - Independent JPEG Group's JPEG runtime library 
 	- jasper - JPEG-2000 runtime library
 	- limpng - PNG library
 	- libtiff - Tag Image File Format library
-	- libraw - raw image decoder library
-	- liblcms2 - Little CMS 2 color management library development headers
 
 - **Audio and Video Libraries:**
+        - SDL2, SDL2_gfx, SDL2_image, SDL2_ttf
+        - ffmpeg
 	- gstreamer - pipeline-based multimedia framework 
 	- gst-plugins-base - GStreamer libraries from the "base" set 
 	- gst-plugins-good - GStreamer development files for libraries from the "good" set 
