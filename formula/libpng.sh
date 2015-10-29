@@ -16,6 +16,7 @@ if [ $? == 1 ]; then
 		"--host=${GV_host}"
 		"--prefix=${UV_sysroot_dir}" 
 		"--libdir=${UV_sysroot_dir}/lib"
+		"--bindir=${UV_sysroot_dir}/usr/bin"
 		"--includedir=${UV_sysroot_dir}/include"
 		"--enable-shared"
 		"--disable-static"

@@ -6,7 +6,7 @@ GV_sha1="238a9b8a66c31fdcdd00790a840ef03cc77482c7"
 GV_depend=()
 
 FU_tools_get_names_from_url
-FU_tools_installed "../../bin/busybox"
+FU_binaries_installed "busybox"
 
 if [ $? == 1 ]; then
 	
@@ -31,8 +31,8 @@ if [ $? == 1 ]; then
 	#	Comment out SYNC since it fails on some libc's
 	sed -i "s/CONFIG_SYNC=y/CONFIG_SYNC=n/" ${GV_source_dir}/${GV_dir_name}/.config
 
-	FU_build_make ARCH=arm CROSS_COMPILE=${UV_target}- 
+	FU_build_make ARCH=arm CROSS_COMPILE=${UV_target}- BINDIR=${UV_sysroot_dir}/usr/bin
 	PATH=$OLDPATH
-	FU_build_make ARCH=arm CROSS_COMPILE=${UV_target}- install CONFIG_PREFIX=${UV_sysroot_dir}
+	FU_build_make ARCH=arm CROSS_COMPILE=${UV_target}- install CONFIG_PREFIX=${UV_sysroot_dir} BINDIR=${UV_sysroot_dir}/usr/bin
 	FU_build_finishinstall
 fi

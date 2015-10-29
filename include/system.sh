@@ -26,7 +26,7 @@ FU_system_require_darwin() {
 	# Check for Homebrew package manager 
 	echo -n "Checking for 'brew'... "
 	if ! hash "brew" 2>/dev/null; then
-		echo "faild"
+		echo "failed"
 		echo
 		echo "  To execute this script on Mac OS X you have to install Homebrew."
 		echo "  You can download Homebrew from: http://brew.sh"
@@ -116,7 +116,7 @@ FU_system_require() {
 	# Check if cross compiler is avalible
 	echo -n "Checking for '${UV_target}-gcc'... "
 	if ! [ -f "${UV_toolchain_dir}/bin/${UV_target}-gcc" ]; then
-		echo "faild"
+		echo "failed"
 		echo 
 		echo "*** Error cross compiler not found!       ***"
 		echo "*** Please check your configuration file. ***"

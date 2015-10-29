@@ -13,7 +13,8 @@ if [ $? == 1 ]; then
 	GV_args=(
 		"--host=${GV_host}"
 		"--prefix=${UV_sysroot_dir}" 
-		"--sbindir=${UV_sysroot_dir}/sbin"
+		"--sbindir=${UV_sysroot_dir}/usr/bin"
+		"--bindir=${UV_sysroot_dir}/usr/bin"
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--includedir=${UV_sysroot_dir}/include"
 	)
@@ -26,8 +27,9 @@ if [ $? == 1 ]; then
 
 	FU_build_make
 	FU_build_make PROGRAMS="scp"
-	FU_build_install 
+	FU_build_make PROGRAMS="scp dbclient dropbear" install
 	FU_build_finishinstall
-	ln -s ${UV_sysroot_dir}/sbin/sshd ${UV_sysroot_dir}/sbin/dropbear
-	ln -s ${UV_sysroot_dir}/bin/ssh ${UV_sysroot_dir}/bin/dbclient
+	mv ${UV_sysroot_dir}/usr/sbin/dropbear ${UV_sysroot_dir}/usr/bin/
+	ln -s ${UV_sysroot_dir}/usr/bin/sshd ${UV_sysroot_dir}/usr/bin/dropbear
+	ln -s ${UV_sysroot_dir}/usr/bin/ssh ${UV_sysroot_dir}/usr/bin/dbclient
 fi

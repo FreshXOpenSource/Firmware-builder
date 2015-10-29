@@ -22,7 +22,12 @@ if [ $? == 1 ]; then
 	FU_file_get_download
 	FU_file_extract_tar
 
+	gsed -i "s/AC_CHECK_LIB.fuse/#AC_CHECK_LIB\(fuse/" ${GV_source_dir}/${GV_dir_name}/configure.ac
+
 	FU_build_autogen
+	export CFLAGS="${CFLAGS} -L${UV_sysroot_dir}/lib"
+	export LDFLAGS="${LDFLAGS} -L${UV_sysroot_dir}/lib -lfuse"
+	cp ${UV_sysroot_dir}/bin/libtool ${GV_source_dir}/${GV_dir_name}/
 	FU_build_configure
 
 	FU_build_make

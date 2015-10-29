@@ -41,7 +41,7 @@ FU_tools_is_error() {
 ##
 FU_tools_error() {
 
-	echo "faild"
+	echo "failed"
 	cat $GV_log_file
 
 	echo 
@@ -104,6 +104,14 @@ FU_binaries_installed() {
 			return 0
 	fi
 	if [ -f "${UV_sysroot_dir}/usr/sbin/$1" ]; then
+			echo " already installed"
+			return 0
+	fi
+	if [ -f "${UV_sysroot_dir}/usr/local/bin/$1" ]; then
+			echo " already installed"
+			return 0
+	fi
+	if [ -f "${UV_sysroot_dir}/usr/local/sbin/$1" ]; then
 			echo " already installed"
 			return 0
 	fi
@@ -202,7 +210,7 @@ FU_tools_print_usage() {
 	echo "    -b | --build      Start building the sysroot."
 	echo "    -a | --available  List all available formulas."
 	echo "    -l | --list       List all instaled formulas."
-	echo "    -l | --debug      Display configure and make output."
+	echo "    -d | --debug      Display configure and make output."
 	echo "    --conf-help       Display the configure help for the new formula."
 	echo "    -v | --version    Script Version"
 	echo "    -h | --help       Display this message"
@@ -368,11 +376,11 @@ FU_tools_cleanup_build() {
 			hdiutil detach $GV_source_dir >/dev/null
 			echo "done"
 		
-			echo -n "Renove source image... " 
+			echo -n "Removing source image... " 
 			rm -rf "${GV_base_dir}/sources.sparseimage"
 			echo "done"
 		else
-			echo -n "Renove source directory... " 
+			echo -n "Removing source directory... " 
 			rm -rf "${GV_base_dir}/src"
 			echo "done"
 		fi

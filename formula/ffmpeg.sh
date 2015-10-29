@@ -15,6 +15,7 @@ if [ $? == 1 ]; then
 		"--prefix=${UV_sysroot_dir}" 
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--incdir=${UV_sysroot_dir}/include"
+		"--bindir=${UV_sysroot_dir}/usr/bin"
 		"--target-os=linux"
 		"--arch=${GV_host}"
 		"--enable-shared"

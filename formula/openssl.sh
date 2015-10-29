@@ -15,6 +15,7 @@ if [ $? == 1 ]; then
 	GV_args=(
 		"linux-generic32"
 		"--prefix=${UV_sysroot_dir}"
+		"--bindir=${UV_sysroot_dir}/usr/bin"
 		"--openssldir=${UV_sysroot_dir}/etc/ssl"
 		"zlib-dynamic"
 		"shared"

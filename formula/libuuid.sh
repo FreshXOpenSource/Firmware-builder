@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GV_url="http://downloads.sourceforge.net/project/fuse/fuse-2.X/2.9.4/fuse-2.9.4.tar.gz"
-GV_sha1="c8b25419f33624dc5240af6a5d26f2c04367ca71"
+GV_url="http://downloads.sourceforge.net/project/libuuid/libuuid-1.0.3.tar.gz"
+GV_sha1="46eaedb875ae6e63677b51ec583656199241d597"
 
 GV_depend=()
 
@@ -14,19 +14,13 @@ if [ $? == 1 ]; then
 		"--host=${GV_host}"
 		"--prefix=${UV_sysroot_dir}" 
 		"--exec-prefix=${UV_sysroot_dir}"
-		"--sbindir=${UV_sysroot_dir}/usr/bin"
+		"--sbindir=${UV_sysroot_dir}/sbin"
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--includedir=${UV_sysroot_dir}/include"
-		"--disable-example"
-		"--enable-shared"
 	)
 	
 	FU_file_get_download
 	FU_file_extract_tar
-
-	export MOUNT_FUSE_PATH=${UV_sysroot_dir}/usr/bin
-	export INIT_D_PATH=${UV_sysroot_dir}/tmp/etc/init.d
-	export UDEV_RULES_PATH=${UV_sysroot_dir}/etc/udev/rules.d
 
 	FU_build_autogen
 	FU_build_configure

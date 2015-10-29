@@ -46,10 +46,14 @@ To build the cross sysroot just run the following command:
 
 #### GCC ARM Cross ToolChains :
 
-- http://www.jvcref.com/files/PI/arm-linux-gnueabihf.pkg
-- [arm-linux-gnueabihf](http://www.welzels.de/blog/download/gcc-linaro-arm-linux-gnueabihf-2014.05_mac.zip)<br>Hardfloat - Based on Linaro crosstool-NG (BeagleBone etc.)
-- [arm-linux-gnueabihf-raspbian](http://www.welzels.de/blog/download/gcc-linaro-arm-linux-gnueabihf-raspbian-2014.05_mac.zip)<br> Hardfloat - Based on Linaro crosstool-NG (Raspberry PI)
-- [arm-linux-gnueabi](http://www.welzels.de/blog/download/linaro-arm-linux-gnueabi-1.13.1-4.8-2014.04-mac.zip)<br>Softfloat - Based on Linaro crosstool-NG (QNAP etc.)
+- http://www.jvcref.com/files/PI/arm-linux-gnueabihf.pkg<br>
+  Installs in /usr/local/arm-linux, Cortex-A8 only (Raspberry 2)
+- [arm-linux-gnueabihf](http://www.welzels.de/blog/download/gcc-linaro-arm-linux-gnueabihf-2014.05_mac.zip)<br>
+  Hardfloat - Based on Linaro crosstool-NG (BeagleBone etc.)
+- [arm-linux-gnueabihf-raspbian](http://www.welzels.de/blog/download/gcc-linaro-arm-linux-gnueabihf-raspbian-2014.05_mac.zip)<br>
+  Installs in /usr/local/linaro, Hardfloat ARMv6 only - Based on Linaro crosstool-NG (Raspberry PI)
+- [arm-linux-gnueabi](http://www.welzels.de/blog/download/linaro-arm-linux-gnueabi-1.13.1-4.8-2014.04-mac.zip)<br>
+  Softfloat - Based on Linaro crosstool-NG (QNAP etc.)
 
 ## Supported binaries / libraries:
 
@@ -57,6 +61,9 @@ To build the cross sysroot just run the following command:
         - Busybox
         - fuse
         - funionfs
+	- strace
+	- binutils
+	- Raspberry Pi Firmware
 
 - **Image Libraries:**
 	- libjpeg - Independent JPEG Group's JPEG runtime library 
