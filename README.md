@@ -1,6 +1,6 @@
 # Firmware-builder
 
-The Firmware-builder is the basis to build our WallyTV Firmware. Its based on https://github.com/Illuminux/arm-cross-sysroot.git but extends it in relevant parts (such as including libtool as a cruical formula and adding further formulas such as libSDL2 etc.)
+The Firmware-builder is the basis to bootstrap and cross-compile our WallyTV Firmware. Its based on https://github.com/Illuminux/arm-cross-sysroot.git but extends it in relevant parts (such as including libtool as a cruical formula and adding further formulas such as libSDL2 etc.)
 
 ARM Cross Sysroot is a script bundle to cross-compile libraries on a host computer for an ARM target. This git repo contains just scripts to build the libraries for an ARM target. It does not contains any of the the source. They will be downloaded during the build process.
 
