@@ -24,15 +24,24 @@ if [ $? == 1 ]; then
 
 	#	Binaries and libs
 	mkdir -p ${UV_sysroot_dir}/opt/vc
-	rsync -avp ${GV_source_dir}/${GV_dir_name}/opt/vc/bin/tvservice ${UV_sysroot_dir}/opt/vc/bin/
-	rsync -avp ${GV_source_dir}/${GV_dir_name}/opt/vc/lib ${UV_sysroot_dir}/opt/vc/
+	rsync -avp ${GV_source_dir}/${GV_dir_name}/hardfp/opt/vc/bin/tvservice ${UV_sysroot_dir}/opt/vc/bin/
+	rsync -avp ${GV_source_dir}/${GV_dir_name}/hardfp/opt/vc/lib ${UV_sysroot_dir}/opt/vc/
+	rsync -avp ${GV_source_dir}/${GV_dir_name}/opt/vc/include ${UV_sysroot_dir}/opt/vc/
 
 	#	Kernel modules for USB HID and Serial, Fuse, Squash, IPv6 and libs
 	export PI_KERNEL_DEST="${UV_sysroot_dir}/lib/modules/${PI_KERNEL_VERSION}"
 	export PI_KERNEL_SRC="${GV_source_dir}/${GV_dir_name}/modules/${PI_KERNEL_VERSION}"
 	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/usb
+	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/net/wireless/rtl8192cu
+	mkdir -p ${PI_KERNEL_DEST}/kernel/sound/{arm,core}
 	mkdir -p ${PI_KERNEL_DEST}/kernel/{fs,net,lib}
+
 	rsync -avp ${PI_KERNEL_SRC}/modules.* ${PI_KERNEL_DEST}
+	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/net/wireless/rtl8192cu/8192cu.ko ${PI_KERNEL_DEST}/kernel/drivers/net/wireless/rtl8192cu/
+	rsync -avp ${PI_KERNEL_SRC}/kernel/sound/arm/snd-bcm2835.ko ${PI_KERNEL_DEST}/kernel/sound/arm/
+	rsync -avp ${PI_KERNEL_SRC}/kernel/sound/core/snd.ko ${PI_KERNEL_DEST}/kernel/sound/core/
+	rsync -avp ${PI_KERNEL_SRC}/kernel/sound/core/snd-pcm.ko ${PI_KERNEL_DEST}/kernel/sound/core/
+	rsync -avp ${PI_KERNEL_SRC}/kernel/sound/core/snd-timer.ko ${PI_KERNEL_DEST}/kernel/sound/core/
 	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/usb/serial/{pl2303*,usbserial*} ${PI_KERNEL_DEST}/kernel/drivers/usb/
 	rsync -avp ${PI_KERNEL_SRC}/kernel/fs/{fuse,squashfs,overlayfs} ${PI_KERNEL_DEST}/kernel/fs/
 	rsync -avp ${PI_KERNEL_SRC}/kernel/net/ipv6 ${PI_KERNEL_DEST}/kernel/net/

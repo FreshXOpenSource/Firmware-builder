@@ -22,14 +22,21 @@ if [ $? == 1 ]; then
 	FU_file_get_download
 	FU_file_extract_tar
 
-	alias sed="gsed"
+	which gsed >/dev/null
+	if [ $? -eq 0 ]; then
+		SED=`which gsed`	
+	else
+		SED=`which sed`	
+	fi
 	
 	OLDPATH=$PATH
-	export PATH=${GV_base_dir}/bin:/usr/bin:$PATH
+	mkdir ${GV_base_dir}/bin
+	ln -s ${SED} ${GV_base_dir}/bin/sed
+	export PATH=${GV_base_dir}/bin:$PATH
 	FU_build_make ARCH=arm CROSS_COMPILE=${UV_target}- defconfig
 
 	#	Comment out SYNC since it fails on some libc's
-	sed -i "s/CONFIG_SYNC=y/CONFIG_SYNC=n/" ${GV_source_dir}/${GV_dir_name}/.config
+	${SED} -i "s/CONFIG_SYNC=y/CONFIG_SYNC=n/" ${GV_source_dir}/${GV_dir_name}/.config
 
 	FU_build_make ARCH=arm CROSS_COMPILE=${UV_target}- BINDIR=${UV_sysroot_dir}/usr/bin
 	PATH=$OLDPATH

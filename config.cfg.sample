@@ -4,6 +4,9 @@
 # Directory in which the sysroot should be installed
 UV_sysroot_dir="${GV_base_dir}/../sysroot"
 
+# Directory in which the stripped firmware will be installed
+UV_firmware_dir="${UV_sysroot_dir}-firmware"
+
 # Directory in which the downloads are to be loaded
 UV_download_dir="${GV_base_dir}/../../cross-sysroot-downloads"
 
@@ -12,6 +15,10 @@ UV_toolchain_dir="/usr/local/linaro/arm-linux-gnueabihf"
 
 # Target architecture
 UV_target="arm-linux-gnueabihf"
+
+# location of libc in the cross-compiler
+#UV_toolchain_libc="sysroot"
+UV_toolchain_libc="${UV_target}/libc"
 
 # Target Board
 # softfloat:  Default soft float boarde

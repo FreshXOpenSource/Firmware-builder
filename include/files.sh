@@ -32,7 +32,7 @@ FU_file_get_download(){
 	
 	# If package archive has loaded
 	else
-		echo "alredy loaded"
+		echo "already loaded"
 	fi
 }
 
@@ -57,7 +57,7 @@ FU_file_git_clone(){
 		git clone $GV_url 2>&1
 		FU_tools_is_error "clone"
 	else
-		echo "alredy loaded"
+		echo "already loaded"
 	fi
 	
 	# Create a source dir for the package

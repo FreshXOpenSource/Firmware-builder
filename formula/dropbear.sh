@@ -28,8 +28,9 @@ if [ $? == 1 ]; then
 	FU_build_make
 	FU_build_make PROGRAMS="scp"
 	FU_build_make PROGRAMS="scp dbclient dropbear" install
+	FU_build_make install
 	FU_build_finishinstall
 	mv ${UV_sysroot_dir}/usr/sbin/dropbear ${UV_sysroot_dir}/usr/bin/
-	ln -s ${UV_sysroot_dir}/usr/bin/sshd ${UV_sysroot_dir}/usr/bin/dropbear
-	ln -s ${UV_sysroot_dir}/usr/bin/ssh ${UV_sysroot_dir}/usr/bin/dbclient
+	ln -s dropbear ${UV_sysroot_dir}/usr/bin/sshd
+	ln -s dbclient ${UV_sysroot_dir}/usr/bin/ssh
 fi

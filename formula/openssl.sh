@@ -12,10 +12,11 @@ if [ $? == 1 ]; then
 	
 	FU_tools_check_depend
 
+	# Usage: Configure [no-<cipher> ...] [enable-<cipher> ...] [experimental-<cipher> ...] [-Dxxx] [-lxxx] [-Lxxx] [-fxxx] [-Kxxx] [no-hw-xxx|no-hw] [[no-]threads] [[no-]shared] [[no-]zlib|zlib-dynamic] [no-asm] [no-dso] [no-krb5] [sctp] [386] [--prefix=DIR] [--openssldir=OPENSSLDIR] [--with-xxx[=vvv]] [--test-sanity] os/compiler[:flags]
+
 	GV_args=(
 		"linux-generic32"
 		"--prefix=${UV_sysroot_dir}"
-		"--bindir=${UV_sysroot_dir}/usr/bin"
 		"--openssldir=${UV_sysroot_dir}/etc/ssl"
 		"zlib-dynamic"
 		"shared"

@@ -10,7 +10,11 @@ FU_tools_installed "${LV_formula%;*}.pc"
 
 if [ $? == 1 ]; then
 
-#	export LIBTOOL="./libtool --tag=CC"
+    if [ ${UV_board} == "raspi" ] || [ ${UV_board} == "raspi2" ]; then
+        export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/opt/vc/include -I${UV_sysroot_dir}/opt/vc/include/interface/vcos/pthreads"
+	export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/opt/vc/include/interface/vmcs_host/linux"
+        export LDFLAGS="${LDFLAGS} -L${UV_sysroot_dir}/opt/vc/lib -lbcm_host -ldl -lvcos -lrt -lvchiq_arm -lpthread -lm"
+    fi
 
 	GV_args=(
 		"--host=${GV_host}"
@@ -32,7 +36,7 @@ if [ $? == 1 ]; then
 	FU_file_get_download
 	FU_file_extract_tar
 
-#	FU_build_autogen
+	FU_build_autogen
 	export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/include/SDL2"
 	export CPPFLAGS="${CPPFLAGS} -I${UV_sysroot_dir}/include/SDL2"
 	export CXXFLAGS="${CXXFLAGS} -I${UV_sysroot_dir}/include/SDL2"

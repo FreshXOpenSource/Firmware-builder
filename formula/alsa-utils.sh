@@ -1,12 +1,12 @@
 #!/bin/bash
 
-GV_url="http://alsa.cybermirror.org/lib/alsa-lib-1.0.29.tar.bz2"
-GV_sha1="9b81d20417170db2a91452bfe537d0893ef4df89"
+GV_url="ftp://ftp.alsa-project.org/pub/utils/alsa-utils-1.0.29.tar.bz2"
+GV_sha1="8b456e2d8adf538aef3fc2d24aae2377509f9544"
 
 GV_depend=()
 
 FU_tools_get_names_from_url
-FU_tools_installed "alsa.pc"
+FU_binaries_installed "aplay"
 
 if [ $? == 1 ]; then
 	
@@ -16,12 +16,10 @@ if [ $? == 1 ]; then
 		"--host=${GV_host}"
 		"--prefix=${GV_prefix}" 
 		"--libdir=${UV_sysroot_dir}/lib"
-		"--bindir=${UV_sysroot_dir}/bin"
-		"--sbindir=${UV_sysroot_dir}/sbin"
-		"--with-configdir=/etc"
 		"--includedir=${UV_sysroot_dir}/include"
 		"--enable-shared"
 		"--disable-static"
+		"--without-curses"
 		"--disable-python"
 	)
 	
