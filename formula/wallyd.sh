@@ -23,6 +23,7 @@ if [ $? == 1 ]; then
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--bindir=${UV_sysroot_dir}/usr/bin"
 		"--includedir=${UV_sysroot_dir}/include"
+		"--enable-raspberry"
 	)
 	
 	#FU_file_get_download
@@ -31,6 +32,7 @@ if [ $? == 1 ]; then
 		
 	export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/opt/vc/include -I${UV_sysroot_dir}/opt/vc/include/interface/vcos/"
 	export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/opt/vc/include/interface/vcos/pthreads -I${UV_sysroot_dir}/opt/vc/include/interface/vmcs_host/linux/"
+	export LDFLAGS="${LDFLAGS} -L${UV_sysroot_dir}/opt/vc/lib"
 	FU_build_autogen
 	FU_build_configure
 	cp ${UV_sysroot_dir}/bin/libtool ${GV_source_dir}/${GV_dir_name}
