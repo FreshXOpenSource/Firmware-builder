@@ -10,6 +10,9 @@ FU_tools_installed "${LV_formula%;*}.pc"
 
 if [ $? == 1 ]; then
 
+    OLDCFLAGS=${CFLAGS}
+    OLDLDFLAGS=${LDFLAGS}
+
     if [ ${UV_board} == "raspi" ] || [ ${UV_board} == "raspi2" ]; then
         export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/opt/vc/include -I${UV_sysroot_dir}/opt/vc/include/interface/vcos/pthreads"
 	export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/opt/vc/include/interface/vmcs_host/linux"
@@ -47,4 +50,7 @@ if [ $? == 1 ]; then
 	FU_build_install 
 	#"install-strip"
 	FU_build_finishinstall
+        export CFLAGS=${OLDCFLAGS}
+	export LDFLAGS=${OLDLDFLAGS}
+
 fi

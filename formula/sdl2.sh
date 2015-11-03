@@ -16,6 +16,8 @@ if [ $? == 1 ]; then
 
 	if [ ${UV_board} == "raspi" ] || [ ${UV_board} == "raspi2" ]; then
 		echo "Building for raspberry 1 or 2"
+		OLDCFLAGS=${CFLAGS}
+		OLDLDFLAGS=${LDFLAGS}
 		export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/opt/vc/include -I${UV_sysroot_dir}/opt/vc/include/interface/vcos/pthreads -I${UV_sysroot_dir}/opt/vc/include/interface/vmcs_host/linux"
 		export LDFLAGS="${LDFLAGS} -L${UV_sysroot_dir}/opt/vc/lib -lbcm_host -ldl -lvcos -lrt -lvchiq_arm -lpthread"
 		GV_args=(
@@ -75,4 +77,6 @@ if [ $? == 1 ]; then
 	FU_build_make
 	FU_build_install 
 	FU_build_finishinstall
+	export CFLAGS=${OLDCFLAGS}
+	export LDFLAGS=${OLDLDFLAGS}
 fi

@@ -10,6 +10,9 @@ FU_tools_installed "${LV_formula%;*}.pc"
 
 if [ $? == 1 ]; then
 
+	OLDCFLAGS=${CFLAGS}
+	OLDLDFLAGS=${LDFLAGS}
+
 	GV_args=(
 		"--host=${GV_host}"
 		"--prefix=${GV_prefix}" 
@@ -37,4 +40,7 @@ if [ $? == 1 ]; then
 	FU_build_make
 	FU_build_install
 	FU_build_finishinstall
+	export CFLAGS=${OLDCFLAGS}
+	export LDFLAGS=${OLDLDFLAGS}
+
 fi
