@@ -8,6 +8,11 @@ GV_base_dir=$(cd "`dirname ${0}`" && pwd -P)
 
 . config.cfg
 
+if [ -z "${UV_firmware_dir}" ]; then
+    echo UV_firmware_dir not set in config.cfg
+    exit 1
+fi
+
 SRC=${UV_sysroot_dir}
 DEST=${UV_firmware_dir}
 DESTBIN=${UV_firmware_dir}/usr/bin

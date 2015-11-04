@@ -13,6 +13,7 @@ UV_download_dir="${GV_base_dir}/../../cross-sysroot-downloads"
 # Directory where the toolchain is located (exclude bin directory)
 UV_toolchain_dir="/usr/local/linaro/arm-linux-gnueabihf"
 
+
 # Target architecture
 UV_target="arm-linux-gnueabihf"
 
