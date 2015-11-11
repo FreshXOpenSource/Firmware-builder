@@ -36,6 +36,7 @@ if [ $? == 1 ]; then
 			"--disable-video-opengl"
 			"--disable-libudev"
 			"--disable-pulseaudio"
+			"--enable-alsa"
 			"--disable-ibus"
 			"--disable-video-directfb"
 		)

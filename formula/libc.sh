@@ -11,7 +11,9 @@ FU_binaries_installed "ldconfig"
 
 if [ $? == 1 ]; then
 
-	rsync -avp ${UV_toolchain_dir}/${UV_toolchain_libc}/lib/ ${UV_sysroot_dir}/lib/
+	#rsync -avp ${UV_toolchain_dir}/${UV_toolchain_libc}/lib/ ${UV_sysroot_dir}/lib/
+	rsync -avp ${UV_toolchain_dir}/${UV_toolchain_libc}/${UV_target}/libc/lib/ ${UV_sysroot_dir}/lib/
+
 	if [ $? == 1 ]; then
 		exit 1
 	fi
@@ -19,7 +21,7 @@ if [ $? == 1 ]; then
 	if [ $? == 1 ]; then
 		exit 1
 	fi
-	rsync -avp ${UV_toolchain_dir}/${UV_toolchain_libc}/sbin/ldconfig ${UV_sysroot_dir}/usr/bin/
+	rsync -avp ${UV_toolchain_dir}/${UV_toolchain_libc}/${UV_target}/libc/sbin/ldconfig ${UV_sysroot_dir}/usr/bin/
 	if [ $? == 1 ]; then
 		exit 1
 	fi
