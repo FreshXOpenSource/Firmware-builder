@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#GV_url="http://download.savannah.gnu.org/releases/freetype/freetype-2.4.9.tar.bz2"
-#GV_sha1="5cb80ab9d369c4e81a2221bcf45adcea2c996b9b"
 GV_url="http://download.savannah.gnu.org/releases/freetype/freetype-2.5.2.tar.gz"
 GV_sha1="a0649cab12662370894599a3f3e7fbe4a6598e1c"
+#GV_url="http://download.savannah.gnu.org/releases/freetype/freetype-2.6.1.tar.bz2"
+#GV_sha1="393447fbf64c107b20a1ccc9e9a9a52f39786ae0"
 
 GV_depend=(
 	"zlib"
@@ -31,13 +31,16 @@ if [ $? == 1 ]; then
 
 	export LIBPNG_CFLAGS=-I${UV_sysroot_dir}/include/libpng16
 	export LIBPNG_LDFLAGS=-lpng16
-	export HOSTCC=/usr/bin/gcc
+	export CC_BUILD=/usr/bin/gcc
+	#FU_build_autogen
+	(cd ${GV_source_dir}/${GV_dir_name}; sh autogen.sh || exit 1)
 	FU_build_configure
 	rm -f "${GV_source_dir}/${GV_dir_name}config.mk"
 
 	FU_build_make
 	FU_build_install
 	FU_build_finishinstall
+	unset CC_BUILD
 fi
 
 export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/include/freetype2"

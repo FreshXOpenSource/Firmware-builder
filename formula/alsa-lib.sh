@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GV_url="http://alsa.cybermirror.org/lib/alsa-lib-1.0.29.tar.bz2"
-GV_sha1="9b81d20417170db2a91452bfe537d0893ef4df89"
+GV_url="ftp://ftp.alsa-project.org/pub/lib/alsa-lib-1.1.0.tar.bz2"
+GV_sha1="94b9af685488221561a73ae285c4fddaa93663e4"
 
 GV_depend=()
 
@@ -18,17 +18,20 @@ if [ $? == 1 ]; then
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--bindir=${UV_sysroot_dir}/bin"
 		"--sbindir=${UV_sysroot_dir}/sbin"
-		"--with-configdir=/etc"
 		"--includedir=${UV_sysroot_dir}/include"
+		"--with-alsa-prefix=/"
 		"--enable-shared"
 		"--disable-static"
 		"--disable-python"
+#		"--with-configdir=/etc"
 	)
 	
 	FU_file_get_download
 	FU_file_extract_tar
 		
 	FU_build_configure
+	export ALSA_CONFIG_DIR=/etc
+	export ALSA_PLUGINS_DIR=/usr/lib/alsa-lib 
 	FU_build_make
 	FU_build_install "install-strip"
 	FU_build_finishinstall

@@ -33,13 +33,15 @@ if [ $? == 1 ]; then
 	mkdir ${GV_base_dir}/bin
 	ln -s ${SED} ${GV_base_dir}/bin/sed
 	export PATH=${GV_base_dir}/bin:$PATH
-	FU_build_make ARCH=arm CROSS_COMPILE=${UV_target}- defconfig
+	export HOSTCC=/usr/bin/gcc
+	FU_build_make ARCH=arm HOSTCC=${HOSTCC} CROSS_COMPILE=${UV_target}- defconfig
 
 	#	Comment out SYNC since it fails on some libc's
 	${SED} -i "s/CONFIG_SYNC=y/CONFIG_SYNC=n/" ${GV_source_dir}/${GV_dir_name}/.config
 
-	FU_build_make ARCH=arm CROSS_COMPILE=${UV_target}- BINDIR=${UV_sysroot_dir}/usr/bin
+	FU_build_make ARCH=arm HOSTCC=${HOSTCC} CROSS_COMPILE=${UV_target}- BINDIR=${UV_sysroot_dir}/usr/bin
 	PATH=$OLDPATH
-	FU_build_make ARCH=arm CROSS_COMPILE=${UV_target}- install CONFIG_PREFIX=${UV_sysroot_dir} BINDIR=${UV_sysroot_dir}/usr/bin
+	FU_build_make ARCH=arm HOSTCC=${HOSTCC} CROSS_COMPILE=${UV_target}- install CONFIG_PREFIX=${UV_sysroot_dir} BINDIR=${UV_sysroot_dir}/usr/bin
 	FU_build_finishinstall
+	unset HOSTCC
 fi
