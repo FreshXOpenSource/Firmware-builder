@@ -3,7 +3,7 @@
 do_cd() {
 
 	cd $1 >$GV_log_file 2>&1 \
-		|| FU_tools_error
+		|| FU_tools_error "change dir $1"
 }
 
 
@@ -20,5 +20,5 @@ do_mkdir() {
 do_cpdir() {
 	
 	cp -rf $1 $2 >$GV_log_file 2>&1 \
-		|| FU_tools_error
+		|| FU_tools_error "copy dir from $1 to $2"
 }

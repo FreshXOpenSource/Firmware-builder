@@ -78,8 +78,13 @@ FU_tools_get_names_from_url() {
 ## Get name, directory name, version and extension from tar name 
 ##
 FU_tools_get_names_from_dir_name() {
-	
 	GV_dir_name=${1%.tar.*}
+	if [ "$GV_dir_name" == "$1" ]; then
+		GV_dir_name=${1%.tgz}
+	fi
+	if [ "$GV_dir_name" == "$1" ]; then
+		GV_dir_name=${1%.tbz}
+	fi
 	GV_name=${GV_dir_name%-*}
 	GV_version=${GV_dir_name##$GV_name*-}
 	GV_extension=${GV_tar_name##*.}

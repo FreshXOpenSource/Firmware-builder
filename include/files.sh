@@ -27,7 +27,7 @@ FU_file_get_download(){
 
 			echo "HTTP Status ${status}: " >$GV_log_file
 			echo "  Can not download: ${GV_url}" >>$GV_log_file
-			FU_tools_error
+			FU_tools_error "download"
 		fi
 	
 	# If package archive has loaded
@@ -90,14 +90,19 @@ FU_file_extract_tar(){
 		do_mkdir $GV_source_dir
 		echo "done"
 	fi
-	
+
+	if [ ! -f "${UV_download_dir}/${GV_tar_name}" ]; then
+		echo File "${UV_download_dir}/${GV_tar_name}" does not exist.
+		FU_tools_error "not found"
+	fi
+
 	echo -n "Extract ${GV_tar_name}... "
-	
+
 	# Test package archive cecksum 
 	if ! [ $GV_sha1 = $(openssl sha1 "${UV_download_dir}/${GV_tar_name}" | awk '{print $2}') ]; then
 		
 		echo "$GV_name: ${GV_tar_name} is not a valid archive!" >$GV_log_file
-		FU_tools_error
+		FU_tools_error "unpack / crc"
 	fi
 	
 	if [ -d "${GV_source_dir}/${GV_dir_name}" ]; then
