@@ -1,20 +1,20 @@
 #!/bin/bash
 
 #
-#	Adapt this to https://github.com/raspberrypi/firmware/archive/master.zip
+#	Adapt this to https://github.com/raspberrypi/firmware/archive/master.zip and fix the shasum
 #   if you want the latest master version, but be aware of potential failures
 #
-GV_url="https://github.com/raspberrypi/firmware/archive/1.20150820.zip"
-GV_sha1="fdb869cc13b074e0e000a930c601052cb86495d7"
+GV_url="https://github.com/FreshXOpenSource/raspberrypi-firmware/archive/Firmware-4.13.zip"
+GV_sha1="c82015fb5ca78dbbea27b279ed9b8dd00dc418f7"
 
 GV_depend=()
 
 # 	This needs to be adapted for newer firmware's (see git repo folder ./modules)
 if [ ${UV_board} == "raspi" ]; then
-	PI_KERNEL_VERSION="4.1.6+"
+	PI_KERNEL_VERSION="4.1.13+"
 fi
 if [ ${UV_board} == "raspi2" ]; then
-	PI_KERNEL_VERSION="4.1.6-v7+"
+	PI_KERNEL_VERSION="4.1.13-v7+"
 fi
 
 FU_tools_get_names_from_url
@@ -28,7 +28,7 @@ if [ $? == 1 ]; then
 	FU_file_get_download
 	FU_file_extract_tar
 
-	mv ${GV_source_dir}/firmware-1.20150820 ${GV_source_dir}/${GV_dir_name}
+	mv ${GV_source_dir}/raspberrypi-firmware-Firmware-4.13 ${GV_source_dir}/${GV_dir_name}
 
 	#	Binaries and libs
 	mkdir -p ${UV_sysroot_dir}/opt/vc
