@@ -19,11 +19,15 @@ if [ $? == 1 ]; then
 		"--bindir=${UV_sysroot_dir}/bin"
 		"--sbindir=${UV_sysroot_dir}/sbin"
 		"--includedir=${UV_sysroot_dir}/include"
-		"--with-alsa-prefix=/"
+                "--datarootdir=${UV_sysroot_dir}/usr/share"
+                "--bindir=${UV_sysroot_dir}/bin"
+                "--sbindir=${UV_sysroot_dir}/sbin"
+      		"--with-alsa-prefix=/"
+                "--with-udev-rules-dir=${UV_sysroot_dir}/etc/udev"
 		"--enable-shared"
 		"--disable-static"
 		"--disable-python"
-#		"--with-configdir=/etc"
+		"--with-configdir=/etc/alsa"
 	)
 	
 	FU_file_get_download
@@ -34,5 +38,6 @@ if [ $? == 1 ]; then
 	export ALSA_PLUGINS_DIR=/usr/lib/alsa-lib 
 	FU_build_make
 	FU_build_install "install-strip"
+//	cp -rp /etc/alsa ${UV_sysroot_dir}/etc
 	FU_build_finishinstall
 fi
