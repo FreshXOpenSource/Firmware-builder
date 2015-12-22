@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GV_url="http://downloads.sourceforge.net/project/libpng/libpng16/1.6.18/libpng-1.6.18.tar.gz"
+GV_url="http://downloads.sourceforge.net/project/libpng/libpng16/older-releases/1.6.18/libpng-1.6.18.tar.gz"
 GV_sha1="c936eaa83fcd65c3c0eb696fd1f0ecc8c04f241f"
 
 GV_depend=()

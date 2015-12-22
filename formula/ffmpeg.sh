@@ -6,7 +6,8 @@ GV_sha1="95046cd9251b69c61b11ebcd1e163ac14d0fc2c6"
 GV_depend=()
 
 FU_tools_get_names_from_url
-FU_binaries_installed "ffmpeg"
+GV_version="54.31.100"
+FU_tools_installed "libavutil.pc"
 
 if [ $? == 1 ]; then
 
