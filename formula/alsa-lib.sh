@@ -8,6 +8,8 @@ GV_depend=()
 FU_tools_get_names_from_url
 FU_tools_installed "alsa.pc"
 
+# TODO : fix /etc/alsa issue
+
 if [ $? == 1 ]; then
 	
 	FU_tools_check_depend
@@ -15,6 +17,10 @@ if [ $? == 1 ]; then
 	GV_args=(
 		"--host=${GV_host}"
 		"--prefix=${GV_prefix}" 
+		"--enable-shared"
+		"--disable-static"
+		"--disable-python"
+		"--with-configdir=/etc/alsa"
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--bindir=${UV_sysroot_dir}/bin"
 		"--sbindir=${UV_sysroot_dir}/sbin"
@@ -24,9 +30,6 @@ if [ $? == 1 ]; then
                 "--sbindir=${UV_sysroot_dir}/sbin"
       		"--with-alsa-prefix=/"
                 "--with-udev-rules-dir=${UV_sysroot_dir}/etc/udev"
-		"--enable-shared"
-		"--disable-static"
-		"--disable-python"
 		"--with-configdir=/etc/alsa"
 	)
 	
@@ -38,6 +41,6 @@ if [ $? == 1 ]; then
 	export ALSA_PLUGINS_DIR=/usr/lib/alsa-lib 
 	FU_build_make
 	FU_build_install "install-strip"
-//	cp -rp /etc/alsa ${UV_sysroot_dir}/etc
+	cp -rp /etc/alsa ${UV_sysroot_dir}/etc
 	FU_build_finishinstall
 fi

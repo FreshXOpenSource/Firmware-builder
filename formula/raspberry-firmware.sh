@@ -33,6 +33,8 @@ if [ $? == 1 ]; then
 	#	Binaries and libs
 	mkdir -p ${UV_sysroot_dir}/opt/vc
 	rsync -avp ${GV_source_dir}/${GV_dir_name}/hardfp/opt/vc/bin/tvservice ${UV_sysroot_dir}/opt/vc/bin/
+	rsync -avp ${GV_source_dir}/${GV_dir_name}/hardfp/opt/vc/bin/raspistill ${UV_sysroot_dir}/opt/vc/bin/
+	rsync -avp ${GV_source_dir}/${GV_dir_name}/hardfp/opt/vc/bin/raspivid ${UV_sysroot_dir}/opt/vc/bin/
 	rsync -avp ${GV_source_dir}/${GV_dir_name}/hardfp/opt/vc/lib ${UV_sysroot_dir}/opt/vc/
 	rsync -avp ${GV_source_dir}/${GV_dir_name}/opt/vc/include ${UV_sysroot_dir}/opt/vc/
 

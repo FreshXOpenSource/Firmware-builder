@@ -4,6 +4,7 @@
 #GV_url="http://wallaby.freshx.de/wallyd-1.0.0.tar.gz"
 GV_url="git@git.freshx.de:Wally/Firmware-wallyd"
 
+#GV_commit="91488914"
 
 GV_depend=(
 	"sdl2"
@@ -29,6 +30,10 @@ if [ $? == 1 ]; then
 	#FU_file_get_download
 	#FU_file_extract_tar
 	FU_file_git_clone
+
+	#if [ ! -z "${GV_commit}" ]; then
+	#	(cd ${GV_source_dir}/${GV_dir_name}; pwd; git checkout ${GV_commit} .)
+	#fi
 	
 	OCFLAGS=${CFLAGS}
 	OLDFLAGS=${LDFLAGS}
@@ -37,7 +42,7 @@ if [ $? == 1 ]; then
 	export LDFLAGS="-L${UV_sysroot_dir}/opt/vc/lib -Wl,-rpath -Wl,LIBDIR ${LDFLAGS}"
 	FU_build_autogen
 	FU_build_configure
-	cp ${UV_sysroot_dir}/bin/libtool ${GV_source_dir}/${GV_dir_name}
+	#cp ${UV_sysroot_dir}/bin/libtool ${GV_source_dir}/${GV_dir_name}
 	export PLUGINSDIR=${UV_sysroot_dir}/lib/wallyd/plugins
 	export CC=${GV_host}-gcc
 	export LD=${GV_host}-ld

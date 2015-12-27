@@ -22,6 +22,7 @@ if [ $? == 1 ]; then
 	FU_file_get_download
 	FU_file_extract_tar
 
+	cp ./patches/* ${GV_source_dir}/${GV_dir_name}/
 	FU_build_autogen
 	FU_build_configure
 

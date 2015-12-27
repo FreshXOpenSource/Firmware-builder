@@ -73,7 +73,7 @@ FU_file_git_clone(){
 	fi
 	do_cpdir "${UV_download_dir}/${GV_dir_name}" \
 		"${GV_source_dir}/${GV_dir_name}"
-	rm -rf "${GV_source_dir}/${GV_dir_name}/.git"
+	#rm -rf "${GV_source_dir}/${GV_dir_name}/.git"
 	
 	GV_build_start=`date +%s`
 }

@@ -19,14 +19,15 @@ if [ $? == 1 ]; then
 		"--target-os=linux"
 		"--arch=${GV_host}"
 		"--enable-shared"
-		"--disable-d3d11va"
-		"--disable-dxva2"
-		"--disable-programs"
-		"--disable-static"
-		"--disable-encoders"
-		"--enable-debug=2"
-		"--assert-level=2"
-		"--disable-doc"
+
+		#"--disable-d3d11va"
+		#"--disable-dxva2"
+		#"--disable-programs"
+		#"--disable-static"
+		#"--disable-encoders"
+		#"--enable-debug=2"
+		#"--assert-level=2"
+		#"--disable-doc"
 	)
 	
 	FU_file_get_download
