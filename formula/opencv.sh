@@ -2,6 +2,8 @@
 
 GV_url="http://garr.dl.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.10/opencv-2.4.10.zip"
 GV_sha1="0b185f5e332d5feef91722a6ed68c36a6d33909e"
+GV_url="https://github.com/Itseez/opencv/archive/3.1.0.zip"
+GV_sha1="8c932b68fe2e1575e88dde759ab1ed1d53d6f41b"
 
 GV_depend=(
 	"cryptodev"
@@ -20,7 +22,7 @@ if [ $? == 1 ]; then
 	FU_file_get_download
 	FU_file_extract_tar
 	
-	GV_dir_name="opencv-2.4.10"
+	GV_dir_name="opencv-3.1.0"
 	GV_name=${GV_dir_name%-*}
 	GV_version=${GV_dir_name##$GV_name*-}
 	GV_extension="zip"
@@ -48,6 +50,13 @@ if [ $? == 1 ]; then
 		hardfp="ON"
 		enable_neon="ON"
 		
+	elif [ "${UV_board}" == "raspi2" ]; then 
+		softfp="OFF"
+		hardfp="ON"
+		enable_neon="OFF"
+		$SED -i 's/-mthumb//g' \
+			"${GV_source_dir}/${GV_dir_name}/platforms/linux/arm-gnueabi.toolchain.cmake"
+		
 	elif [ "${UV_board}" == "raspi" ]; then 
 		softfp="OFF"
 		hardfp="ON"
@@ -65,7 +74,7 @@ if [ $? == 1 ]; then
 		hardfp="OFF"
 		enable_neon="OFF"
 	fi
-	
+
 	GV_args=(
 		"-DSOFTFP=${softfp}"
 		"-DCMAKE_TOOLCHAIN_FILE='${GV_source_dir}/${GV_dir_name}/platforms/linux/arm-gnueabi.toolchain.cmake'"
@@ -74,12 +83,17 @@ if [ $? == 1 ]; then
 		"-DCMAKE_LIBRARY_PATH:PATH='${UV_sysroot_dir}/lib'"
 		"-DCMAKE_INCLUDE_PATH:PATH='${UV_sysroot_dir}/include'"
 		"-DCMAKE_INSTALL_PREFIX='$UV_sysroot_dir'"
+		"-DCMAKE_INSTALL_NAME_TOOL=/usr/bin/install_name_tool"
 		"-DENABLE_VFPV3=${hardfp}"
 		"-DENABLE_NEON=${enable_neon}"
 		"${GV_source_dir}/${GV_dir_name}"
+#		"-DCMAKE_C_COMPILER_ENV_VAR=${UV_toolchain_dir}/bin/${UV_target}-gcc"
+#		"-DCMAKE_CXX_COMPILER_ENV_VAR=${UV_toolchain_dir}/bin/${UV_target}-g++"
+#		"-DCMAKE_C_COMPILER=${UV_toolchain_dir}/bin/${UV_target}-gcc"
+#		"-DCMAKE_CXX_COMPILER=${UV_toolchain_dir}/bin/${UV_target}-g++"
 	)
-	
 
+	echo ${UV_target}-gcc
 	FU_build_configure_cmake
 	FU_build_make
 	FU_build_install
