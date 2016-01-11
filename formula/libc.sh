@@ -9,8 +9,6 @@ GV_depend=()
 FU_tools_get_names_from_url
 FU_binaries_installed "ldconfig"
 
-false
-
 if [ $? == 1 ]; then
 
 	#rsync -avp ${UV_toolchain_dir}/${UV_toolchain_libc}/lib/ ${UV_sysroot_dir}/lib/
