@@ -1,0 +1,29 @@
+#!/bin/bash
+
+GV_url="ftp://ftp.kernel.org/pub/linux/libs/security/linux-privs/kernel-2.2/libcap-1.10.tar.gz"
+GV_sha1="95e86a451df60db26152f753ed5f880d42a41884"
+
+FU_tools_get_names_from_url
+GV_version="1.1.0"
+FU_tools_installed "libcap.pc"
+
+if [ $? == 1 ]; then
+
+	GV_args=(
+		"--host=${GV_host}"
+		"--prefix=${UV_sysroot_dir}" 
+		"--exec-prefix=${UV_sysroot_dir}"
+		"--sbindir=${UV_sysroot_dir}/sbin"
+		"--libdir=${UV_sysroot_dir}/lib"
+		"--includedir=${UV_sysroot_dir}/include"
+	)
+	
+	FU_file_get_download
+	FU_file_extract_tar
+
+	export CFLAGS=-I${UV_toolchain_dir}/${UV_target}/libc/usr/include"
+
+	FU_build_make
+	FU_build_install 
+	FU_build_finishinstall
+fi

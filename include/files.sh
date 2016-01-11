@@ -112,7 +112,7 @@ FU_file_extract_tar(){
 	cd $GV_source_dir
 	
 	# Extract package archive
-	if [ "${GV_extension}" = "zip" ]; then
+	if [ "${GV_extension}" == "zip" ]; then
 		
 		if [ "$GV_debug" == true ]; then
 			unzip -o ${UV_download_dir}/${GV_tar_name} 2>&1 | tee $GV_log_file
@@ -122,7 +122,6 @@ FU_file_extract_tar(){
 			FU_tools_is_error "extract"
 		fi
 	else 
-		
 		if [ "$GV_debug" == true ]; then
 			tar xvf ${UV_download_dir}/${GV_tar_name} 2>&1 | tee $GV_log_file
 			FU_tools_is_error "extract"

@@ -43,15 +43,26 @@ if [ $? == 1 ]; then
 	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/net/wireless/rtl8192cu
 	mkdir -p ${PI_KERNEL_DEST}/kernel/sound/{arm,core}
 	mkdir -p ${PI_KERNEL_DEST}/kernel/{fs,net,lib}
+	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/media/platform/bcm2835
+	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/media/v4l2-core
 
 	rsync -avp ${PI_KERNEL_SRC}/modules.* ${PI_KERNEL_DEST}
+	# WLAN
 	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/net/wireless/rtl8192cu/8192cu.ko ${PI_KERNEL_DEST}/kernel/drivers/net/wireless/rtl8192cu/
+	# Video Support
+	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/media/platform/bcm2835/bcm2835-v4l2.ko ${PI_KERNEL_DEST}/kernel/drivers/media/platform/bcm2835
+	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/media/v4l2-core/*.ko ${PI_KERNEL_DEST}/kernel/drivers/media/v4l2-core/
+	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/media/media.ko ${PI_KERNEL_DEST}/kernel/drivers/media/
+	# Audio
 	rsync -avp ${PI_KERNEL_SRC}/kernel/sound/arm/snd-bcm2835.ko ${PI_KERNEL_DEST}/kernel/sound/arm/
 	rsync -avp ${PI_KERNEL_SRC}/kernel/sound/core/snd.ko ${PI_KERNEL_DEST}/kernel/sound/core/
 	rsync -avp ${PI_KERNEL_SRC}/kernel/sound/core/snd-pcm.ko ${PI_KERNEL_DEST}/kernel/sound/core/
 	rsync -avp ${PI_KERNEL_SRC}/kernel/sound/core/snd-timer.ko ${PI_KERNEL_DEST}/kernel/sound/core/
+	# USB basic / ttl adapter
 	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/usb/serial/{pl2303*,usbserial*} ${PI_KERNEL_DEST}/kernel/drivers/usb/
+	# FS
 	rsync -avp ${PI_KERNEL_SRC}/kernel/fs/{fuse,squashfs,overlayfs} ${PI_KERNEL_DEST}/kernel/fs/
+	# Net
 	rsync -avp ${PI_KERNEL_SRC}/kernel/net/ipv6 ${PI_KERNEL_DEST}/kernel/net/
 
 	#	Boot folder 
