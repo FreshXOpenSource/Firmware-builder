@@ -5,14 +5,13 @@
 UV_sysroot_dir="${GV_base_dir}/../sysroot"
 
 # Directory in which the stripped firmware will be installed
-UV_firmware_dir="${UV_sysroot_dir}-firmware"
+UV_firmware_dir="/Users/mosebach/Documents/workspace/wally/Firmware-core/pi2"
 
 # Directory in which the downloads are to be loaded
 UV_download_dir="${GV_base_dir}/../../cross-sysroot-downloads"
 
 # Directory where the toolchain is located (exclude bin directory)
 UV_toolchain_dir="/usr/local/linaro/arm-linux-gnueabihf"
-
 
 # Target architecture
 UV_target="arm-linux-gnueabihf"
@@ -27,7 +26,18 @@ UV_toolchain_libc="${UV_target}/libc"
 # raspi:      Raspberry PI
 # beaglebone: BeagleBone / Beglebone black
 #
-UV_board="beaglebone"
+UV_board="raspi2"
+
+#
+#   Set modules to build
+#   base - basic system
+#   cam  - camera + opencv support
+#   small - small system
+#
+UV_modules="cam"
+
+#  Enable developer mode (does not delete libs+includes from firmware)
+UV_devel="true"
 
 # 
 # QT-Setup
