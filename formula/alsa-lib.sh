@@ -9,7 +9,6 @@ FU_tools_get_names_from_url
 FU_tools_installed "alsa.pc"
 
 # TODO : fix /etc/alsa issue
-
 if [ $? == 1 ]; then
 	
 	FU_tools_check_depend

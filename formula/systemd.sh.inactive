@@ -1,0 +1,38 @@
+#!/bin/bash
+
+GV_url="http://www.freedesktop.org/software/systemd/systemd-221.tar.xz"
+GV_sha1="682ebb60305f4bf1067aca929d664d062e80888f"
+
+GV_depend=()
+
+FU_tools_get_names_from_url
+FU_binaries_installed "systemd"
+
+if [ $? == 1 ]; then
+	
+	FU_tools_check_depend
+
+	GV_args=(
+		"--host=${GV_host}"
+		"--prefix=${UV_sysroot_dir}" 
+		"--datadir=${UV_sysroot_dir}" 
+		"--libdir=${UV_sysroot_dir}/lib"
+		"--sysconfdir=${UV_sysroot_dir}/etc"
+		"--datarootdir=${UV_sysroot_dir}/usr/share"
+		"--bindir=${UV_sysroot_dir}/bin"
+		"--sbindir=${UV_sysroot_dir}/sbin"
+		"--without-python"
+		"--disable-dbus"
+		"--disable-efi"
+		"--disable-tests"
+		#"--with-dns-servers=8.8.8.8 8.8.4.4"
+	)
+	
+	FU_file_get_download
+	FU_file_extract_tar
+	FU_build_autogen	
+	FU_build_configure
+	FU_build_make
+	FU_build_install
+	FU_build_finishinstall
+fi

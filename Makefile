@@ -1,0 +1,2 @@
+@all:
+		./sysroot -b -d

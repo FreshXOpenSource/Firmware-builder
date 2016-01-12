@@ -1,16 +1,15 @@
 #!/bin/bash
 
-GV_url="http://garr.dl.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.10/opencv-2.4.10.zip"
-GV_sha1="0b185f5e332d5feef91722a6ed68c36a6d33909e"
-GV_url="https://github.com/Itseez/opencv/archive/3.1.0.zip"
-GV_sha1="8c932b68fe2e1575e88dde759ab1ed1d53d6f41b"
+GV_url="https://github.com/Itseez/opencv/archive/2.4.12.3.zip"
+GV_sha1="fc162721b2b2a0ea764fbefaaa6144b9c1aa58c2"
 
 GV_depend=(
 	"cryptodev"
 )
 
 FU_tools_get_names_from_url
-GV_version=${GV_version%.zip}
+# pkgconfig created incorrectly (with v=2.4.12.2)
+GV_version="2.4.12.2"
 FU_tools_installed "opencv.pc"
 
 if [ $? == 1 ]; then
@@ -22,7 +21,7 @@ if [ $? == 1 ]; then
 	FU_file_get_download
 	FU_file_extract_tar
 	
-	GV_dir_name="opencv-3.1.0"
+	GV_dir_name="opencv-2.4.12.3"
 	GV_name=${GV_dir_name%-*}
 	GV_version=${GV_dir_name##$GV_name*-}
 	GV_extension="zip"
