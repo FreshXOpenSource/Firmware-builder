@@ -377,17 +377,17 @@ FU_tools_cleanup_build() {
 		
 		if [ $GV_build_os = "Darwin" ]; then 
 		
-			echo -n "Unmount source image... " 
-			hdiutil detach $GV_source_dir >/dev/null
-			echo "done"
+			#echo -n "Unmount source image... " 
+			#hdiutil detach $GV_source_dir >/dev/null
+			#echo "done"
 		
-			echo -n "Removing source image... " 
-			rm -rf "${GV_base_dir}/sources.sparseimage"
-			echo "done"
+			#echo -n "Removing source image... " 
+			#rm -rf "${GV_base_dir}/sources.sparseimage"
+			#echo "done"
 		else
-			echo -n "Removing source directory... " 
-			rm -rf "${GV_base_dir}/src"
-			echo "done"
+			#echo -n "Removing source directory... " 
+			#rm -rf "${GV_base_dir}/src"
+			#echo "done"
 		fi
 	fi
 	
