@@ -1,12 +1,12 @@
 #!/bin/bash
 
-GV_url="https://github.com/nodejs/node/archive/v4.2.4.zip"
-GV_sha1="571d121cb9c539932f58f73de26066dd38774d6c"
+GV_url="https://github.com/v8/v8/archive/4.10.10.zip"
+GV_sha1="c077cc6c2f744f251f016de0be9e74d47370157c"
 
 GV_depend=()
 
 FU_tools_get_names_from_url
-FU_binaries_installed "opt/nodejs/bin/node"
+FU_binaries_installed "opt/nodejs/bin/v8"
 
 if [ $? == 1 ]; then
 	
@@ -19,28 +19,38 @@ if [ $? == 1 ]; then
 	OPT_target="${UV_sysroot_dir}/opt/node"
 
 	if [ "${UV_board}" == "beaglebone" ]; then
-		FP="hard"
+		FP="on"
 		FPU="neon"
+		FPT="hard"
 		CPU="arm"
+		ISV7="true"
 
 	elif [ "${UV_board}" == "raspi2" ]; then
-		FP="hard"
+		FP="on"
 		FPU="neon"
+		FPT="hard"
 		CPU="arm"
+		ISV7="true"
 
 	elif [ "${UV_board}" == "raspi" ]; then
-		FP="hard"
+		FP="on"
 		FPU="vfp"
+		FPT="hard"
 		CPU="arm"
+		ISV7="false"
 
 	elif [ "${UV_board}" == "hardfloat" ]; then
 		CPU="arm"
-		FP="hard"
+		FP="on"
+		FPT="hard"
 		FPU="vfp"
+		ISV7="false"
 	else
 		CPU="arm"
-		FP="soft"
+		FP="off"
+		FPT="soft"
 		FPU="vfp"
+		ISV7="false"
 	fi
 
 	GV_args=(
@@ -59,11 +69,11 @@ if [ $? == 1 ]; then
 	FU_file_get_download
 	FU_file_extract_tar
 
-	GV_dir_name="node-4.2.4"
+	GV_dir_name="v8-4.10.10"
 
-	FU_build_configure
-	FU_build_make
-	FU_build_install
+	# FU_build_configure
+	FU_build_make arm.release armv7=${ISV7} hardfp=${FP} snapshot=off armfpu=${FPU} armfloatabi=${FPT} -j4 i18nsupport=off
+	# FU_build_make
 	FU_build_finishinstall
 
 	unset CC
