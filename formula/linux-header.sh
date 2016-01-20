@@ -10,7 +10,7 @@ if [ $? == 1 ]; then
 	if [ ! -e ${UV_sysroot_dir}/include/Kbuild ]; then
 		FU_file_get_download
 		FU_file_extract_tar
-		cp -rp ${GV_source_dir}/${GV_dir_name}/include/* ${UV_sysroot_dir}/include
+		cp -rp ${GV_source_dir}/${GV_dir_name}/include/* ${UV_sysroot_dir}/opt/kernel/include
 	fi
 
 fi
