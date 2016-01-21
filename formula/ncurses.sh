@@ -13,13 +13,15 @@ if [ $? == 1 ]; then
 	
 	FU_tools_check_depend
 
+	OPT_prefix="${UV_sysroot_dir}/opt/addon" 
+
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${GV_prefix}" 
-		"--libdir=${UV_sysroot_dir}/lib"
-		"--bindir=${UV_sysroot_dir}/bin"
-		"--sbindir=${UV_sysroot_dir}/sbin"
-		"--includedir=${UV_sysroot_dir}/include"
+		"--prefix=${OPT_prefix}/opt" 
+		"--libdir=${OPT_prefix}/opt/lib"
+		"--bindir=${OPT_prefix}/opt/bin"
+		"--sbindir=${OPT_prefix}/opt/bin"
+		"--includedir=${OPT_prefix}/opt/include"
 		"--with-shared"
 		"--without-debug"
 		"--without-ada"
@@ -35,11 +37,9 @@ if [ $? == 1 ]; then
 	FU_file_extract_tar
 	FU_build_autogen
 		
-	#export BUILD_CC=/usr/bin/gcc
 	FU_build_configure
 	FU_build_make
 	FU_build_install
 	FU_build_finishinstall
-	#unset BUILD_CC
 
 fi
