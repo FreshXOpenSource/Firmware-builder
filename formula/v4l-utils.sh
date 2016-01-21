@@ -5,21 +5,23 @@ GV_sha1="8a378134fd28e0fc0c8c84cd9da0dc4a48338113"
 
 FU_tools_get_names_from_url
 GV_version=${GV_version%.zip}
-FU_tools_installed "libv4l2.pc"
+FU_binaries_installed "opt/addon/bin/v4l2-ctl"
 
 if [ $? == 1 ]; then
 	
 	FU_tools_check_depend
 
+	OPT_prefix="${UV_sysroot_dir}/opt/addon"
+
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${GV_prefix}"
-		"--libdir=${UV_sysroot_dir}/lib"
-		"--bindir=${UV_sysroot_dir}/bin"
-		"--sbindir=${UV_sysroot_dir}/sbin"
-		"--includedir=${UV_sysroot_dir}/include"
- 	    "--datarootdir=${UV_sysroot_dir}/usr/share"
-		"--with-udevdir=${UV_sysroot_dir}/lib/udev"
+		"--prefix=${OPT_prefix}"
+		"--libdir=${OPT_prefix}/lib"
+		"--bindir=${OPT_prefix}/bin"
+		"--sbindir=${OPT_prefix}/bin"
+		"--includedir=${OPT_prefix}/include"
+ 	    "--datarootdir=${OPT_prefix}/share"
+		"--with-udevdir=${OPT_prefix}/lib/udev"
 		"--enable-shared"
 		"--disable-static"
 		"--disable-libdvbv5"

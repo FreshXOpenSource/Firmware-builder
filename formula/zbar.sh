@@ -15,11 +15,11 @@ if [ $? == 1 ]; then
 
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${GV_prefix}"
-		"--libdir=${UV_sysroot_dir}/lib"
-		"--bindir=${UV_sysroot_dir}/bin"
-		"--sbindir=${UV_sysroot_dir}/sbin"
-		"--includedir=${UV_sysroot_dir}/include"
+		"--prefix=${GV_prefix}/opt"
+		"--libdir=${UV_sysroot_dir}/opt/lib"
+		"--bindir=${UV_sysroot_dir}/opt/bin"
+		"--sbindir=${UV_sysroot_dir}/opt/bin"
+		"--includedir=${UV_sysroot_dir}/opt/include"
 		"--enable-shared"
 		"--disable-static"
 		"--without-imagemagick"

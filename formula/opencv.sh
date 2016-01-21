@@ -82,15 +82,11 @@ if [ $? == 1 ]; then
 		"-DCMAKE_SYSTEM_INCLUDE_PATH:PATH='${UV_sysroot_dir}/include'"
 		"-DCMAKE_LIBRARY_PATH:PATH='${UV_sysroot_dir}/lib'"
 		"-DCMAKE_INCLUDE_PATH:PATH='${UV_sysroot_dir}/include'"
-		"-DCMAKE_INSTALL_PREFIX='$UV_sysroot_dir'"
+		"-DCMAKE_INSTALL_PREFIX='${UV_sysroot_dir}'"
 		"-DCMAKE_INSTALL_NAME_TOOL=/usr/bin/install_name_tool"
 		"-DENABLE_VFPV3=${hardfp}"
 		"-DENABLE_NEON=${enable_neon}"
 		"${GV_source_dir}/${GV_dir_name}"
-#		"-DCMAKE_C_COMPILER_ENV_VAR=${UV_toolchain_dir}/bin/${UV_target}-gcc"
-#		"-DCMAKE_CXX_COMPILER_ENV_VAR=${UV_toolchain_dir}/bin/${UV_target}-g++"
-#		"-DCMAKE_C_COMPILER=${UV_toolchain_dir}/bin/${UV_target}-gcc"
-#		"-DCMAKE_CXX_COMPILER=${UV_toolchain_dir}/bin/${UV_target}-g++"
 	)
 
 	echo ${UV_target}-gcc

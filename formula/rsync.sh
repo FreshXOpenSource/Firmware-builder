@@ -6,17 +6,19 @@ GV_sha1="0d4c7fb7fe3fc80eeff922a7c1d81df11dbb8a1a"
 GV_depend=()
 
 FU_tools_get_names_from_url
-FU_binaries_installed "rsync"
+FU_binaries_installed "opt/addon/bin/rsync"
 
 if [ $? == 1 ]; then
 	
 	FU_tools_check_depend
 
+	OPT_prefix="${UV_sysroot_dir}/opt/addon"
+
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${UV_sysroot_dir}" 
-		"--datadir=${UV_sysroot_dir}" 
-		"--libdir=${UV_sysroot_dir}/lib"
+		"--prefix=${OPT_prefix}" 
+		"--datadir=${OPT_prefix}" 
+		"--libdir=${OPT_prefix}/lib"
 		"--enable-shared"
 		"--disable-static"
 	)
