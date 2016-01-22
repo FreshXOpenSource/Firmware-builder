@@ -46,8 +46,8 @@ if [ $? == 1 ]; then
 	export PLUGINSDIR=${UV_sysroot_dir}/lib/wallyd/plugins
 	export CC=${GV_host}-gcc
 	export LD=${GV_host}-ld
-	export CFLAGS="${CFLAGS} -fPIC -std=gnu99 -DRASPBERRY"
-	export PLUGIN_CFLAGS="-fPIC -std=gnu99 -DRASPBERRY -I${UV_sysroot_dir}/opt/vc/include -I${UV_sysroot_dir}/opt/vc/include"
+	export CFLAGS="${CFLAGS} -fPIC -std=gnu99"
+	export PLUGIN_CFLAGS="-fPIC -std=gnu99 -I${UV_sysroot_dir}/opt/vc/include -I${UV_sysroot_dir}/opt/vc/include"
 	FU_build_make
 	export PATH=${UV_toolchain_dir}/${UV_target}/bin:$PATH
 	FU_build_install
