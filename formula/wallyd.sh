@@ -40,6 +40,7 @@ if [ $? == 1 ]; then
 	export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/opt/vc/include -I${UV_sysroot_dir}/opt/vc/include/interface/vcos/"
 	export CFLAGS="${CFLAGS} -I${UV_sysroot_dir}/opt/vc/include/interface/vcos/pthreads -I${UV_sysroot_dir}/opt/vc/include/interface/vmcs_host/linux/"
 	export LDFLAGS="-L${UV_sysroot_dir}/opt/vc/lib -Wl,-rpath -Wl,LIBDIR ${LDFLAGS}"
+
 	FU_build_autogen
 	FU_build_configure
 	#cp ${UV_sysroot_dir}/bin/libtool ${GV_source_dir}/${GV_dir_name}

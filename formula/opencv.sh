@@ -11,7 +11,7 @@ GV_depend=(
 
 FU_tools_get_names_from_url
 GV_version=${GV_version%.zip}
-FU_tools_installed "opencv.pc"
+FU_binaries_installed "opt/opencv/bin/opencv_annotation"
 
 if [ $? == 1 ]; then
 	
@@ -78,11 +78,11 @@ if [ $? == 1 ]; then
 	GV_args=(
 		"-DSOFTFP=${softfp}"
 		"-DCMAKE_TOOLCHAIN_FILE='${GV_source_dir}/${GV_dir_name}/platforms/linux/arm-gnueabi.toolchain.cmake'"
-		"-DCMAKE_SYSTEM_LIBRARY_PATH:PATH='${UV_sysroot_dir}/lib'"
-		"-DCMAKE_SYSTEM_INCLUDE_PATH:PATH='${UV_sysroot_dir}/include'"
-		"-DCMAKE_LIBRARY_PATH:PATH='${UV_sysroot_dir}/lib'"
-		"-DCMAKE_INCLUDE_PATH:PATH='${UV_sysroot_dir}/include'"
-		"-DCMAKE_INSTALL_PREFIX='${UV_sysroot_dir}'"
+		"-DCMAKE_SYSTEM_LIBRARY_PATH:PATH='${UV_sysroot_dir}/opt/opencv/lib'"
+		"-DCMAKE_SYSTEM_INCLUDE_PATH:PATH='${UV_sysroot_dir}/opt/opencv/include'"
+		"-DCMAKE_LIBRARY_PATH:PATH='${UV_sysroot_dir}/opt/opencv/lib'"
+		"-DCMAKE_INCLUDE_PATH:PATH='${UV_sysroot_dir}/opt/opencv/include'"
+		"-DCMAKE_INSTALL_PREFIX='${UV_sysroot_dir}/opt/opencv/'"
 		"-DCMAKE_INSTALL_NAME_TOOL=/usr/bin/install_name_tool"
 		"-DENABLE_VFPV3=${hardfp}"
 		"-DENABLE_NEON=${enable_neon}"

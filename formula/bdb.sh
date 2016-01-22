@@ -39,6 +39,8 @@ if [ $? == 1 ]; then
 	make install
 	make clean
 
+	rm -rf ${OPT_prefix}/docs
+
 	unset CC
 	unset STRIP
 fi

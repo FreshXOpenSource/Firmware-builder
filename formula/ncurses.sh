@@ -17,11 +17,11 @@ if [ $? == 1 ]; then
 
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${OPT_prefix}/opt" 
-		"--libdir=${OPT_prefix}/opt/lib"
-		"--bindir=${OPT_prefix}/opt/bin"
-		"--sbindir=${OPT_prefix}/opt/bin"
-		"--includedir=${OPT_prefix}/opt/include"
+		"--prefix=${OPT_prefix}" 
+		"--libdir=${OPT_prefix}/lib"
+		"--bindir=${OPT_prefix}/bin"
+		"--sbindir=${OPT_prefix}/bin"
+		"--includedir=${OPT_prefix}/include"
 		"--with-shared"
 		"--without-debug"
 		"--without-ada"
