@@ -350,16 +350,16 @@ FU_tools_create_source_image(){
 	# Mount image
 	echo -n "Mounting Source Image... "
 	
-	if [ ! -d "${GV_source_dir}" ]; then 
+	#if [ ! -d "${GV_source_dir}" ]; then 
 		
 		hdiutil attach "${GV_src_img_name}" \
 			-mountroot $GV_base_dir >$GV_log_file 2>&1
 		FU_tools_is_error "hdiutil"
 		echo "mounted to ${GV_source_dir}"
-	else
+	#else
 		
-		echo "already mounted to ${GV_source_dir}"
-	fi
+	#	echo "already mounted to ${GV_source_dir}"
+	#fi
 }
 
 
@@ -373,23 +373,23 @@ FU_tools_cleanup_build() {
 
 	printf "\nCleanup build directory:\n"
 	
-	if [ -d "${GV_source_dir}" ]; then
+	#if [ -d "${GV_source_dir}" ]; then
 		
-		if [ $GV_build_os = "Darwin" ]; then 
+		#if [ $GV_build_os = "Darwin" ]; then 
 		
-			echo -n "Unmount source image... " 
-			hdiutil detach $GV_source_dir >/dev/null
-			echo "done"
+			#echo -n "Unmount source image... " 
+			#hdiutil detach $GV_source_dir >/dev/null
+			#echo "done"
 		
-			echo -n "Removing source image... " 
-			rm -rf "${GV_base_dir}/sources.sparseimage"
-			echo "done"
-		else
-			echo -n "Removing source directory... " 
-			rm -rf "${GV_base_dir}/src"
-			echo "done"
-		fi
-	fi
+			#echo -n "Removing source image... " 
+			#rm -rf "${GV_base_dir}/sources.sparseimage"
+			#echo "done"
+		#else
+			#echo -n "Removing source directory... " 
+			#rm -rf "${GV_base_dir}/src"
+			#echo "done"
+		#fi
+	#fi
 	
 	# remove lock file
 	rm -f $GV_lock_file

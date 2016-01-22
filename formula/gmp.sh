@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GV_url="https://gmplib.org/download/gmp/gmp-5.0.5.tar.bz2"
-GV_sha1="12a662456033e21aed3e318aef4177f4000afe3b"
+GV_url="https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2"
+GV_sha1="db38c7b67f8eea9f2e5b8a48d219165b2fdab11f"
 
 GV_depend=()
 

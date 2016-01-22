@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GV_url="http://www.mpfr.org/mpfr-current/mpfr-3.1.3.tar.xz"
-GV_sha1="383303f9de5ebe055b03b94642b03465baf9e6c7"
+GV_url="ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.2.tar.gz"
+GV_sha1="5072d82ab50ec36cc8c0e320b5c377adb48abe70"
 
 FU_tools_get_names_from_url
 

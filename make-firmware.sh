@@ -20,6 +20,7 @@ DESTBIN=${UV_firmware_dir}/usr/bin
 test -e ${DESTBIN} || mkdir -p ${DESTBIN}
 test -e ${DEST}/tmp || mkdir -p ${DEST}/tmp
 test -e ${DEST}/opt/vc || mkdir -p ${DEST}/opt/vc
+test -e ${DEST}-opt || mkdir -p ${DEST}-opt
 chmod 1777 ${DEST}/tmp
 
 rsync -avp ${SRC}/lib/ ${DEST}/lib  --exclude "*.a" --exclude "*.la"
@@ -28,8 +29,9 @@ rsync -avp ${SRC}/bin/ ${DESTBIN}/
 rsync -avp ${SRC}/sbin/ ${DESTBIN}/
 rsync -avp ${SRC}/usr/sbin/ ${DESTBIN}/
 rsync -avp ${SRC}/usr/bin/ ${DESTBIN}/
-rsync -avp ${SRC}/opt/vc/{bin,lib} ${DEST}/opt/vc
+rsync -avp ${SRC}/opt/vc ${DEST}/opt --exclude include
 rsync -avp ${SRC}/etc/ ${DEST}/etc
+rsync -avp ${SRC}/opt/ ${DEST}-opt --exclude vc --exclude *.a --exclude include --exclude man --exclude python2.*/test
 
 # Clean out
 LIST="/usr/bin/c_rehash /usr/bin/libtool /usr/bin/libtoolize /usr/bin/openssl /usr/bin/pngfix  /usr/bin/ffprobe /usr/bin/ffserver /usr/bin/ffmpeg  /usr/bin/curl    /usr/bin/rdjpgcom /usr/bin/wrjpgcom /usr/bin/uniondbg /usr/bin/unionimap /usr/bin/unionctl /usr/bin/djpeg    /usr/bin/cjpeg    /usr/bin/jpegtran /usr/bin/strace-log-merge /usr/bin/png-fix-itxt    /usr/bin/strace-graph /usr/bin/dropbearkey /usr/bin/dropbearconvert /etc/init.d /lib/pkg-config /lib/cmake /usr/bin/freetype-config /usr/bin/sdl2-config /usr/bin/curl-config /usr/bin/libpng16-config"
