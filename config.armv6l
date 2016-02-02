@@ -1,0 +1,51 @@
+
+# The variable GV_base_dir is the directory in which the main script is located.
+
+# Directory in which the sysroot should be installed
+UV_sysroot_dir="${GV_base_dir}/../sysroot-arm6l-new"
+
+# Directory in which the stripped firmware will be installed
+UV_firmware_dir="/Users/mokai/Documents/workspace/wally/Firmware-bin/firmware/pi.armv6l"
+
+# Directory in which the downloads are to be loaded
+UV_download_dir="${GV_base_dir}/downloads"
+
+# Directory where the toolchain is located (exclude bin directory)
+#UV_toolchain_dir="/usr/local/armv6l"
+UV_toolchain_dir="/usr/local/armv6l"
+
+# Target architecture
+#UV_target="arm-none-eabi"
+UV_target="arm-linux-gnueabihf"
+#UV_target="arm-cortex_a8-linux-gnueabi"
+
+# Target Board
+# disabled-softfloat:  Default soft float boarde
+# disabled-hardfloat:  Default hard float boarde 
+# disabled-beaglebone: BeagleBone / Beglebone black
+# raspi:      Raspberry PI 1 A/B
+# raspi2:     Raspberry PI 2 
+#
+#UV_board="raspi2"
+UV_board="raspi"
+
+if [ ${UV_board} == "arm-none-eabi-raspi2" ]; then
+    export CPPFLAGS="${CPPFLAGS} -O3 -march=armv7-a -mtune=cortex-a8 -mfpu=neon -mfloat-abi=hard --specs=rdimon.specs"
+    export CFLAGS="${CFLAGS} -O3 -march=armv7-a -mtune=cortex-a8 -mfpu=neon -mfloat-abi=hard --specs=rdimon.specs"
+fi
+if [ ${UV_board} == "arm-none-eabi-raspi" ]; then
+    export CPPFLAGS="${CPPFLAGS} -O2 -mcpu=arm1176jzf-s --specs=rdimon.specs"
+    export CFLAGS="${CFLAGS} -O2 -mcpu=arm1176jzf-s --specs=rdimon.specs"
+fi
+# 
+# QT-Setup
+#
+
+# QT install directory for host enviroment 
+UV_qt_dir="/usr/local"
+
+# QT Version - set to "true" to install.
+# Note: It can be installed both versions. But Qt5 is experimentel and can
+#       corrupted Qt4 as well.
+UV_qt_4=true
+UV_qt_5=false
