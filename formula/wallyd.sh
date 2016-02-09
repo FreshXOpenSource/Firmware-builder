@@ -25,6 +25,7 @@ if [ $? == 1 ]; then
 		"--bindir=${UV_sysroot_dir}/usr/bin"
 		"--includedir=${UV_sysroot_dir}/include"
 		"--enable-raspberry"
+		"--disable-dmalloc"
 	)
 	
 	#FU_file_get_download
