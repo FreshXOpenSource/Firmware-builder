@@ -17,6 +17,8 @@ if [ $? == 1 ]; then
 		"--sbindir=${UV_sysroot_dir}/sbin"
 		"--libdir=${UV_sysroot_dir}/lib"
 		"--includedir=${UV_sysroot_dir}/include"
+		"--enable-shared"
+		"--disable-static"
 	)
 	
 	FU_file_get_download

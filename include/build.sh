@@ -1,5 +1,37 @@
 #!/bin/bash
 
+##
+## Run autoreconf script if no configure script exists 
+##
+FU_build_autoreconf() {
+	
+	# Go into source dir of the package 
+	do_cd "${GV_source_dir}/${GV_dir_name}" 
+	# Run if configure does not exists
+	if ! [ -f "${GV_source_dir}/${GV_dir_name}/configure" ]; then
+		
+		echo -n "Autoreconf ${GV_name}... "
+		
+		if [ "$GV_debug" == true ]; then
+			echo
+			autoreconf -i -v -f 2>&1 | tee $GV_log_file
+			FU_tools_is_error "autoreconf"
+			
+		else
+			autoreconf -i -v -f >$GV_log_file 2>&1
+			FU_tools_is_error "autoreconf"
+			
+		fi
+	fi
+	
+	# Write bild.log into package log
+	printf "\n\nAutoreconf %s:\n\n" ${GV_name} >> "${GV_log_dir}/${GV_name}.log"
+	cat $GV_log_file >> "${GV_log_dir}/${GV_name}.log"
+	
+	# Go back to base dir
+	do_cd $GV_base_dir
+}
+
 
 ##
 ## Run autogen script if no configure script exists 

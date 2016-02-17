@@ -23,7 +23,7 @@ test -e ${DEST}/opt/vc || mkdir -p ${DEST}/opt/vc
 test -e ${DEST}-opt || mkdir -p ${DEST}-opt
 chmod 1777 ${DEST}/tmp
 
-rsync -avp ${SRC}/lib/ ${DEST}/lib  --exclude "*.a" --exclude "*.la"
+rsync -avp ${SRC}/lib/ ${DEST}/lib  --exclude "*.a" --exclude "*.la" --exclude python2.7
 #--exclude "libnss*"
 rsync -avp ${SRC}/bin/ ${DESTBIN}/
 rsync -avp ${SRC}/sbin/ ${DESTBIN}/
