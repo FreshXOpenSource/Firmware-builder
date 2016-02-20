@@ -46,6 +46,7 @@ if [ $? == 1 ]; then
 	FU_build_configure
 	#cp ${UV_sysroot_dir}/bin/libtool ${GV_source_dir}/${GV_dir_name}
 	export PLUGINSDIR=${UV_sysroot_dir}/lib/wallyd/plugins
+	export BINDIR=${UV_sysroot_dir}/bin
 	export CC=${GV_host}-gcc
 	export LD=${GV_host}-ld
 	export CFLAGS="${CFLAGS} -fPIC -std=gnu99"

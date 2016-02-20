@@ -46,7 +46,8 @@ test -e $DEST/init || ln -s usr/bin/busybox $DEST/init
 
 echo Firmware created in $DEST, Cleaning up.
 
-REMOVE_BINARIES="wpa_cli wpa_passphrase filan procan"
+REMOVE_BINARIES="wpa_cli wpa_passphrase filan procan aconnect alsamixer alsaucm aplaymidi arecordmidi aseqnet alsaloop alsatplg amidi aplay arecord aseqdump aserver"
+REMOVE_LIBS="libncurse*"
 
 cd $DEST
 rm -rf lib/*.a
