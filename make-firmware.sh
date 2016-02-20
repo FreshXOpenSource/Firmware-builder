@@ -44,5 +44,12 @@ test -e $DEST/sbin || ln -s usr/bin $DEST/sbin
 test -e $DEST/usr/sbin || ln -s bin $DEST/usr/sbin
 test -e $DEST/init || ln -s usr/bin/busybox $DEST/init
 
-echo Firmware created in $DEST
+echo Firmware created in $DEST, Cleaning up.
+
+REMOVE_BINARIES="wpa_cli wpa_passphrase filan procan"
+
+cd $DEST
+rm -rf lib/*.a
+rm -rf lib/pkgconfig
+for i in `echo $REMOVE_BINARIES`; do test -e bin/$i && rm bin/$i; done
 

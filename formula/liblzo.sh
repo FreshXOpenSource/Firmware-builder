@@ -6,7 +6,7 @@ GV_sha1="e2a60aca818836181e7e6f8c4f2c323aca6ac057"
 GV_depend=()
 
 FU_tools_get_names_from_url
-FU_binary_installed "lib/liblzo2.so"
+FU_binaries_installed "lib/liblzo2.so"
 
 if [ $? == 1 ]; then
 	

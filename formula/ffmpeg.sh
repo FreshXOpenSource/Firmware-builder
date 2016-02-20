@@ -19,6 +19,7 @@ if [ $? == 1 ]; then
 		"--bindir=${UV_sysroot_dir}/usr/bin"
 		"--target-os=linux"
 		"--arch=${GV_host}"
+		"--disable-doc"
 		"--enable-shared"
 
 		#"--disable-d3d11va"
@@ -28,7 +29,6 @@ if [ $? == 1 ]; then
 		#"--disable-encoders"
 		#"--enable-debug=2"
 		#"--assert-level=2"
-		#"--disable-doc"
 	)
 	
 	FU_file_get_download

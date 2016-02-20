@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GV_url="http://curl.haxx.se/download/curl-7.26.0.tar.bz2"
-GV_sha1="c2e62eaace2407d377bf544d1f808aea6dddf64c"
+GV_url="https://curl.haxx.se/download/curl-7.47.1.tar.bz2"
+GV_sha1="db57162affecaa320b462e35d2adbb37bf30bbe7"
 
 GV_depend=(
 	"zlib"
