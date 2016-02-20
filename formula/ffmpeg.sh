@@ -1,7 +1,8 @@
 #!/bin/bash
 
-GV_url="http://ffmpeg.org/releases/ffmpeg-2.8.1.tar.bz2"
-GV_sha1="95046cd9251b69c61b11ebcd1e163ac14d0fc2c6"
+GV_url="http://ffmpeg.org/releases/ffmpeg-3.0.tar.bz2"
+#http://ffmpeg.org/releases/ffmpeg-2.8.1.tar.bz2"
+GV_sha1="daa827a8d1b7d5be418087165a55bdad5197f9d5"
 
 GV_depend=()
 
@@ -20,6 +21,13 @@ if [ $? == 1 ]; then
 		"--target-os=linux"
 		"--arch=${GV_host}"
 		"--disable-doc"
+		"--enable-gpl"
+#		"--enable-libx264"
+		"--enable-nonfree"
+		"--enable-openssl"
+		"--disable-decoder=opus"
+		"--enable-encoder=vc264"
+		"--extra-libs=-ldl"
 		"--enable-shared"
 
 		#"--disable-d3d11va"
