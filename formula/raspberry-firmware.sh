@@ -44,6 +44,7 @@ if [ $? == 1 ]; then
 	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/net/wireless/rtl8192cu
 	mkdir -p ${PI_KERNEL_DEST}/kernel/sound/{arm,core}
 	mkdir -p ${PI_KERNEL_DEST}/kernel/{fs,net,lib}
+	mkdir -p ${PI_KERNEL_DEST}/kernel/net/nfc
 	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/media/platform/bcm2835
 	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/media/v4l2-core
 
@@ -67,7 +68,7 @@ if [ $? == 1 ]; then
 	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/hwmon/hwmon.ko ${PI_KERNEL_DEST}/kernel/drivers/hwmon
 	# RFID / NFC
 	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/nfc/pn533.ko ${PI_KERNEL_DEST}/kernel/drivers/nfc
-	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/nfc/nfc.ko ${PI_KERNEL_DEST}/kernel/drivers/nfc
+	rsync -avp ${PI_KERNEL_SRC}/kernel/net/nfc/nfc.ko ${PI_KERNEL_DEST}/kernel/net/nfc
 	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/rfkill/rfkill.ko ${PI_KERNEL_DEST}/kernel/drivers/rfkill
 
 	# FS
