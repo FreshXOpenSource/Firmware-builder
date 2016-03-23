@@ -38,6 +38,8 @@ if [ $? == 1 ]; then
 
 	#	Comment out SYNC since it fails on some libc's
 	${SED} -i "s/CONFIG_SYNC=y/CONFIG_SYNC=n/" ${GV_source_dir}/${GV_dir_name}/.config
+	${SED} -i "s/# CONFIG_NC_110_COMPAT is not set/CONFIG_NC_110_COMPAT=y/" ${GV_source_dir}/${GV_dir_name}/.config
+	${SED} -i "s/# CONFIG_FEATURE_UNIX_LOCAL is not set/CONFIG_FEATURE_UNIX_LOCAL=y/" ${GV_source_dir}/${GV_dir_name}/.config
 
 	FU_build_make ARCH=arm HOSTCC=${HOSTCC} CROSS_COMPILE=${UV_target}- BINDIR=${UV_sysroot_dir}/usr/bin
 	PATH=$OLDPATH

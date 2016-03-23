@@ -47,6 +47,8 @@ if [ $? == 1 ]; then
 	mkdir -p ${PI_KERNEL_DEST}/kernel/net/nfc
 	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/media/platform/bcm2835
 	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/media/v4l2-core
+	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/input/touchscreen
+	mkdir -p ${PI_KERNEL_DEST}/kernel/drivers/hwmon/
 
 	rsync -avp ${PI_KERNEL_SRC}/modules.* ${PI_KERNEL_DEST}
 	# WLAN
@@ -75,6 +77,9 @@ if [ $? == 1 ]; then
 	rsync -avp ${PI_KERNEL_SRC}/kernel/fs/{fuse,squashfs,overlayfs} ${PI_KERNEL_DEST}/kernel/fs/
 	# Net
 	rsync -avp ${PI_KERNEL_SRC}/kernel/net/ipv6 ${PI_KERNEL_DEST}/kernel/net/
+	# Touch
+	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/input/touchscreen/ads7846.ko ${PI_KERNEL_DEST}/kernel/drivers/input/touchscreen
+	rsync -avp ${PI_KERNEL_SRC}/kernel/drivers/hwmon/hwmon.ko ${PI_KERNEL_DEST}/kernel/drivers/hwmon/
 
 	#	Boot folder 
 	if [ ${UV_board} == "raspi2" ]; then
