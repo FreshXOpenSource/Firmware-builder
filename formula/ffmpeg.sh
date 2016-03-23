@@ -7,7 +7,7 @@ GV_sha1="daa827a8d1b7d5be418087165a55bdad5197f9d5"
 GV_depend=()
 
 FU_tools_get_names_from_url
-GV_version="54.31.100"
+GV_version="55.17.103"
 FU_tools_installed "libavutil.pc"
 
 if [ $? == 1 ]; then
