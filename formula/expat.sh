@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GV_url="http://sourceforge.net/projects/expat/files/expat/2.1.0/expat-2.1.0.tar.gz"
-GV_sha1="b08197d146930a5543a7b99e871cba3da614f6f0"
+GV_url="https://sourceforge.net/projects/expat/files/expat/2.1.1/expat-2.1.1.tar.bz2"
+GV_sha1="ff91419882ac52151050dad0ee8190645fbeee08"
 
 GV_depend=()
 
@@ -12,10 +12,9 @@ if [ $? == 1 ]; then
 	
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${GV_prefix}" 
-		
-		"--libdir=${UV_sysroot_dir}/lib"
-		"--includedir=${UV_sysroot_dir}/include"
+		"--prefix=${GV_prefix}/opt/addon" 
+		"--libdir=${UV_sysroot_dir}/opt/addon/lib"
+		"--includedir=${UV_sysroot_dir}/opt/addon/include"
 		"--enable-shared"
 		"--disable-static"
 	)

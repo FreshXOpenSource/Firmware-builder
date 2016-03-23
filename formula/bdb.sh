@@ -6,7 +6,7 @@ GV_sha1="e89a4d7208577486461f7a0d1e40addc4467a6a6"
 GV_depend=()
 
 FU_tools_get_names_from_url
-FU_binaries_installed "opt/addon/bin/db_load"
+FU_binaries_installed "opt/addon-extra/bin/db_load"
 
 if [ $? == 1 ]; then
 	
@@ -15,7 +15,7 @@ if [ $? == 1 ]; then
 	export CC="${UV_target}-gcc"
 	export STRIP="${UV_target}-strip"
 
-	OPT_prefix="${UV_sysroot_dir}/opt/addon"
+	OPT_prefix="${UV_sysroot_dir}/opt/addon-extra"
 
 	GV_dir_name="db-6.1.19"
 
