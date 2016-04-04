@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GV_url="http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.9.91.tar.bz2"
-GV_sha1="9f4dff0a6e50ade2b919f33795eae8438a285595"
+GV_url="http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.94.tar.bz2"
+GV_sha1="5eb9b1fe8c3f9e0447b1238ade3c7af15b671a4d"
 
 GV_depend=(
 	"zlib"
@@ -18,15 +18,14 @@ if [ $? == 1 ]; then
 
 	GV_args=(
 		"--host=${GV_host}"
-		"--prefix=${GV_prefix}" 
-		
-		"--libdir=${UV_sysroot_dir}/lib"
-		"--includedir=${UV_sysroot_dir}/include"
+		"--prefix=${GV_prefix}/opt/addon" 
+		"--libdir=${UV_sysroot_dir}/opt/addon/lib"
+		"--includedir=${UV_sysroot_dir}/opt/addon/include"
 		"--enable-shared"
 		"--disable-static"
-		"--enable-libxml2"
 		"--disable-docs"
 		"--with-arch=ARM"
+		#--enable-libxml2
 	)
 	
 	FU_file_get_download
