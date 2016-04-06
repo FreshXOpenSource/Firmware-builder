@@ -31,10 +31,12 @@ if [ $? == 1 ]; then
 	
 	mkdir -p "${GV_source_dir}/${GV_dir_name}/build"
 	GV_dir_name="${GV_dir_name}/build"
-	
+
+	export CFLAGS="$CFLAGS -fPIC"
 	FU_build_configure_cmake
 	FU_build_make
 	FU_build_install
 
 	FU_build_finishinstall
+	unset CFLAGS
 fi
