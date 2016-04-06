@@ -23,6 +23,8 @@ if [ $? == 1 ]; then
 	echo $SRC
 
 	rsync -avp $SRC/* ${UV_sysroot_dir}/lib/
+	
+	test -f ${UV_sysroot_dir}/lib/libc.so.6 && ln -s ${UV_sysroot_dir}/lib/libc.so.6 ${UV_sysroot_dir}/lib/libc.so
 
 	if [ $? == 1 ]; then
 		exit 1

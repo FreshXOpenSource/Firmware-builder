@@ -10,7 +10,7 @@ GV_depend=(
 )
 
 FU_tools_get_names_from_url
-FU_tools_installed "${LV_formula%;*}.pc"
+FU_binaries_installed "${UV_sysroot_dir}/opt/addon/lib/libfontconfig.so"
 
 if [ $? == 1 ]; then
 	
@@ -25,6 +25,7 @@ if [ $? == 1 ]; then
 		"--disable-static"
 		"--disable-docs"
 		"--with-arch=ARM"
+		"--with-expat=${UV_sysroot_dir}/opt/addon"
 		#--enable-libxml2
 	)
 	
