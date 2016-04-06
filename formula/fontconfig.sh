@@ -10,7 +10,7 @@ GV_depend=(
 )
 
 FU_tools_get_names_from_url
-FU_binaries_installed "${UV_sysroot_dir}/opt/addon/lib/libfontconfig.so"
+FU_binaries_installed "/opt/addon/lib/libfontconfig.so"
 
 if [ $? == 1 ]; then
 	

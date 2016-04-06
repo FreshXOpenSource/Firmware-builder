@@ -1,12 +1,11 @@
 #!/bin/bash
 
-GV_url="https://github.com/FreshXOpenSource/dukluv.git"
+GV_url="https://github.com/creationix/dukluv.git"
 GV_sha1=""
 
 FU_tools_get_names_from_url
-GV_version="0.8.1"
 
-FU_tools_installed "dukluv.pc"
+FU_binaries_installed "/lib/libduv.a"
 
 if [ $? == 1 ]; then
 	

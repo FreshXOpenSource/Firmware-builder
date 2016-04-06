@@ -6,7 +6,7 @@ GV_sha1="ff91419882ac52151050dad0ee8190645fbeee08"
 GV_depend=()
 
 FU_tools_get_names_from_url
-FU_binaries_installed "${UV_sysroot_dir}/opt/addon/lib/pkgconfig/expat.pc"
+FU_binaries_installed "/opt/addon/lib/pkgconfig/expat.pc"
 
 
 if [ $? == 1 ]; then
